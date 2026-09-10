@@ -1,0 +1,13 @@
+dk-shop-portfolio/
+├── index.html
+├── README.md
+├── CHANGELOG.md
+├── PROJECT-STRUCTURE.txt
+├── .gitignore
+└── assets/
+    ├── css/
+    │   └── styles.css
+    ├── icons/
+    │   └── favicon.svg
+    └── js/
+        └── app.js
