@@ -1,11 +1,36 @@
+/* Minimal, stable alignment overrides for the landing showcase. */
 @media (min-width:1181px){
-  .hero-showcase{position:relative;min-height:430px;display:grid!important;grid-template-columns:minmax(180px,1fr) minmax(180px,1fr);grid-template-rows:auto auto;align-content:center;justify-content:center;align-items:center;gap:18px 20px;padding:22px 26px!important;}
-  .hero-showcase::before{display:none!important}
-  .hero-showcase>.main-card{grid-column:1/-1;grid-row:1;width:min(500px,100%)!important;max-width:500px!important;margin:0 auto!important;position:relative!important;inset:auto!important;transform:none!important;rotate:0deg!important;translate:none!important;flex:none!important;}
-  .hero-showcase>.float-card{position:static!important;inset:auto!important;transform:none!important;translate:none!important;rotate:0deg!important;margin:0!important;min-width:0!important;width:180px;justify-self:center;}
-  .hero-showcase>.float-one{grid-column:1;grid-row:2}
-  .hero-showcase>.float-two{grid-column:2;grid-row:2}
+  .hero-showcase{
+    position:relative!important;
+    min-height:430px!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    grid-template-areas:"main main" "left right"!important;
+    align-content:center!important;
+    align-items:center!important;
+    justify-items:center!important;
+    gap:16px 20px!important;
+    padding:22px 28px!important;
+  }
+  .hero-showcase>.main-card{
+    grid-area:main!important;
+    width:min(470px,100%)!important;
+    max-width:470px!important;
+    margin:0 auto!important;
+    position:relative!important;
+    inset:auto!important;
+    transform:none!important;
+  }
+  .hero-showcase>.float-card{
+    position:static!important;
+    width:180px!important;
+    min-width:0!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  .hero-showcase>.float-one{grid-area:left!important;justify-self:end!important}
+  .hero-showcase>.float-two{grid-area:right!important;justify-self:start!important}
 }
 @media (max-width:1180px){
-  .hero-showcase>.main-card{transform:none!important;rotate:0deg!important;translate:none!important;}
+  .hero-showcase>.main-card{transform:none!important}
 }
