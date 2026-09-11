@@ -1,0 +1,27 @@
+/* DK SHOP Motion Upgrade — visual enhancement only */
+:root{--mx:50vw;--my:20vh;--motion-ease:cubic-bezier(.2,.8,.2,1)}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+  background-image:linear-gradient(color-mix(in srgb,var(--line) 22%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 22%,transparent) 1px,transparent 1px);
+  background-size:42px 42px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 72%);opacity:.2
+}
+body::after{
+  content:"";position:fixed;width:440px;height:440px;border-radius:50%;left:calc(var(--mx) - 220px);top:calc(var(--my) - 220px);pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(96,165,250,.16),rgba(124,58,237,.08) 35%,transparent 68%);filter:blur(8px);transition:left .08s linear,top .08s linear
+}
+.ambient-a{animation:driftA 18s ease-in-out infinite alternate}.ambient-b{animation:driftB 22s ease-in-out infinite alternate}.hero::before{animation:heroGlow 12s ease-in-out infinite alternate}.hero::after{animation:heroGlow2 14s ease-in-out infinite alternate}
+@keyframes driftA{to{transform:translate(90px,70px) scale(1.16)}}@keyframes driftB{to{transform:translate(-90px,55px) scale(1.12)}}@keyframes heroGlow{to{transform:translate(-70px,45px) scale(1.18);opacity:.72}}@keyframes heroGlow2{to{transform:translate(70px,-35px) scale(1.12);opacity:.76}}
+@keyframes floatMain{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes floatLeft{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}@keyframes floatRight{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.16)}50%{box-shadow:0 0 0 9px rgba(52,211,153,0)}}@keyframes shimmer{0%{transform:translateX(-120%) skewX(-18deg)}100%{transform:translateX(240%) skewX(-18deg)}}
+.hero-showcase>.main-card{animation:floatMain 6s ease-in-out infinite;will-change:transform}.hero-showcase>.float-one{animation:floatLeft 5.5s ease-in-out infinite;will-change:transform}.hero-showcase>.float-two{animation:floatRight 6.5s ease-in-out infinite;will-change:transform}.status-chip{animation:livePulse 2.8s ease-in-out infinite}
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .22s var(--motion-ease),box-shadow .22s var(--motion-ease),border-color .22s ease,background .22s ease}.btn:hover{transform:translateY(-2px)}
+.btn.primary::after,.btn.secondary::after{content:"";position:absolute;inset:-40% auto -40% -35%;width:28%;pointer-events:none;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%) skewX(-18deg)}.btn.primary:hover::after,.btn.secondary:hover::after{animation:shimmer .72s ease}
+.ripple-wave{position:absolute;border-radius:50%;background:rgba(255,255,255,.28);transform:scale(0);animation:ripple .58s ease-out;pointer-events:none;z-index:4}@keyframes ripple{to{transform:scale(4);opacity:0}}
+.feature-grid article,.analytics-card,.panel,.history-item,.metric,.grand-card,.method-note,.settings-card{transition:transform .28s var(--motion-ease),box-shadow .28s var(--motion-ease),border-color .28s ease}.feature-grid article:hover,.analytics-card:hover,.metric:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(17,24,39,.10)}.panel:hover{border-color:color-mix(in srgb,var(--brand) 20%,var(--line))}
+.summary-panel{transition:transform .32s var(--motion-ease)}.summary-panel.motion-sticky{transform:translateY(-3px) scale(.996)}
+.reveal-motion{opacity:0;transform:translateY(22px);filter:blur(3px)}.reveal-motion.is-visible{opacity:1;transform:none;filter:none;transition:opacity .7s var(--motion-ease),transform .7s var(--motion-ease),filter .7s ease}.hero-copy.reveal-motion{transform:translateX(-24px)}.hero-showcase.reveal-motion{transform:translateX(24px)}.hero-copy.reveal-motion.is-visible,.hero-showcase.reveal-motion.is-visible{transform:none}
+.row-enter{animation:rowEnter .38s var(--motion-ease) both}@keyframes rowEnter{from{opacity:0;transform:translateY(10px) scale(.995)}to{opacity:1;transform:none}}
+.toast{transition:opacity .25s ease,transform .35s var(--motion-ease),box-shadow .25s ease!important}.toast.show{box-shadow:0 18px 45px rgba(0,0,0,.16)}
+.nav-brand>span{transition:transform .3s var(--motion-ease),box-shadow .3s ease}.nav-brand:hover>span{transform:rotate(-6deg) scale(1.06);box-shadow:0 14px 30px rgba(37,99,235,.35)}.showcase-card{transition:box-shadow .35s ease,border-color .35s ease}.showcase-card:hover{box-shadow:0 34px 90px rgba(0,0,0,.34);border-color:rgba(255,255,255,.24)}
+.analytics-card strong,.grand-card strong,.showcase-total strong{font-variant-numeric:tabular-nums}.page-loaded .topbar{animation:navDrop .58s var(--motion-ease) both}@keyframes navDrop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@media(max-width:760px){body::after{display:none}.hero-showcase>.main-card{animation-duration:7.5s}.hero-showcase>.float-card{animation:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}body::after{display:none}.reveal-motion{opacity:1;transform:none;filter:none}}
