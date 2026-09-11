@@ -12,20 +12,38 @@
   <title>DK SHOP — Smart Order Split</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/precision.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
   <div class="ambient ambient-b"></div>
 
   <div id="printReceipt" class="print-receipt" aria-hidden="true">
-    <div class="receipt-logo">DK</div><div class="receipt-title">STRUK DIGITAL</div><div class="receipt-store">DK SHOP</div><div id="printMeta" class="receipt-meta"></div><div class="receipt-rule"></div><div id="printItems"></div><div class="receipt-rule"></div><div id="printSummary"></div><div class="receipt-rule"></div><div class="receipt-grand"><span>TOTAL BAYAR</span><strong id="printGrandTotal">Rp0</strong></div><div class="receipt-rule"></div><div id="printPayment" class="receipt-foot"></div>
+    <div class="receipt-logo">DK</div>
+    <div class="receipt-store">DK SHOP</div>
+    <div class="receipt-title">STRUK DIGITAL</div>
+    <div id="printMeta" class="receipt-meta"></div>
+    <div class="receipt-rule"></div>
+    <div id="printItems"></div>
+    <div class="receipt-rule"></div>
+    <div id="printSummary"></div>
+    <div class="receipt-rule"></div>
+    <div class="receipt-grand"><span>TOTAL BAYAR</span><strong id="printGrandTotal">Rp0</strong></div>
+    <div class="receipt-rule"></div>
+    <div id="printPayment" class="receipt-foot"></div>
   </div>
 
   <header class="topbar">
     <a class="nav-brand" href="#top" aria-label="DK SHOP home"><span>DK</span><b>DK SHOP</b></a>
-    <nav class="nav-links" aria-label="Navigasi utama"><a href="#features">Fitur</a><a href="#app">Aplikasi</a><a href="#history">History</a></nav>
-    <div class="nav-actions"><a class="btn ghost desktop-only" href="https://github.com/DikaFauzi/dk-shop-portfolio" target="_blank" rel="noopener">GitHub</a><button id="themeToggle" class="btn ghost" type="button" aria-label="Ganti tema">Tema Gelap</button></div>
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="#features">Fitur</a>
+      <a href="#app">Aplikasi</a>
+      <a href="#history">History</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn ghost desktop-only" href="https://github.com/DikaFauzi/dk-shop-portfolio" target="_blank" rel="noopener">GitHub</a>
+      <button id="themeToggle" class="btn ghost" type="button" aria-label="Ganti tema">Tema Gelap</button>
+    </div>
   </header>
 
   <main id="top" class="site-shell">
@@ -34,35 +52,142 @@
         <div class="eyebrow"><span class="eyebrow-dot"></span> PORTFOLIO PROJECT • FRONTEND WEB APP</div>
         <h1>Split pesanan.<br><span>Hitung presisi.</span><br>Berbagi jadi mudah.</h1>
         <p>DK SHOP membantu membagi ongkir dan diskon secara proporsional, mencatat transaksi, menyimpan history, dan membuat struk digital — semuanya langsung di browser.</p>
-        <div class="hero-cta"><a class="btn primary large" href="#app">Coba Aplikasi</a><button class="btn secondary large" type="button" data-action="load-demo">Muat Data Demo</button></div>
-        <div class="trust-row"><span>✓ Tanpa server</span><span>✓ Local-first</span><span>✓ Pembulatan presisi</span></div>
+        <div class="hero-cta">
+          <a class="btn primary large" href="#app">Coba Aplikasi</a>
+          <button class="btn secondary large" type="button" data-action="load-demo">Muat Data Demo</button>
+        </div>
+        <div class="trust-row">
+          <span>✓ Tanpa server</span><span>✓ Local-first</span><span>✓ Pembulatan presisi</span>
+        </div>
       </div>
-      <div class="hero-showcase" aria-hidden="true"><div class="showcase-card main-card"><div class="showcase-head"><span>DK SHOP</span><span class="status-chip">LIVE</span></div><div class="showcase-total"><small>Total Pesanan</small><strong>Rp186.000</strong></div><div class="showcase-list"><div><span>Ayam Geprek</span><b>Rp62.000</b></div><div><span>Nasi Goreng</span><b>Rp70.000</b></div><div><span>Es Kopi</span><b>Rp54.000</b></div></div></div><div class="float-card float-one"><span>Largest remainder</span><b>100% presisi</b></div><div class="float-card float-two"><span>Struk digital</span><b>PNG + Print</b></div></div>
+      <div class="hero-showcase" aria-hidden="true">
+        <div class="showcase-card main-card">
+          <div class="showcase-head"><span>DK SHOP</span><span class="status-chip">LIVE</span></div>
+          <div class="showcase-total"><small>Total Pesanan</small><strong>Rp186.000</strong></div>
+          <div class="showcase-list">
+            <div><span>Ayam Geprek</span><b>Rp62.000</b></div>
+            <div><span>Nasi Goreng</span><b>Rp70.000</b></div>
+            <div><span>Es Kopi</span><b>Rp54.000</b></div>
+          </div>
+        </div>
+        <div class="float-card float-one"><span>Largest remainder</span><b>100% presisi</b></div>
+        <div class="float-card float-two"><span>Struk digital</span><b>PNG + Print</b></div>
+      </div>
     </section>
 
-    <section id="features" class="feature-grid" aria-label="Fitur utama"><article><span class="feature-icon">∑</span><div><h3>Smart Split</h3><p>Ongkir dan diskon dibagi proporsional sesuai harga item.</p></div></article><article><span class="feature-icon">◎</span><div><h3>Presisi Rupiah</h3><p>Metode largest remainder menjaga total pembagian tetap tepat.</p></div></article><article><span class="feature-icon">◫</span><div><h3>Digital Receipt</h3><p>Download struk PNG dan print thermal 80 mm langsung dari browser.</p></div></article><article><span class="feature-icon">⌁</span><div><h3>Local-first</h3><p>Draft, history, tema, dan nomor transaksi tersimpan di perangkat.</p></div></article></section>
+    <section id="features" class="feature-grid" aria-label="Fitur utama">
+      <article><span class="feature-icon">∑</span><div><h3>Smart Split</h3><p>Ongkir dan diskon dibagi proporsional sesuai harga item.</p></div></article>
+      <article><span class="feature-icon">◎</span><div><h3>Presisi Rupiah</h3><p>Metode largest remainder menjaga total pembagian tetap tepat.</p></div></article>
+      <article><span class="feature-icon">◫</span><div><h3>Digital Receipt</h3><p>Download struk PNG dan print thermal 80 mm langsung dari browser.</p></div></article>
+      <article><span class="feature-icon">⌁</span><div><h3>Local-first</h3><p>Draft, history, tema, dan nomor transaksi tersimpan di perangkat.</p></div></article>
+    </section>
 
-    <section class="analytics-section" aria-labelledby="analyticsTitle"><div class="section-heading"><div><span class="section-kicker">ANALYTICS</span><h2 id="analyticsTitle">Ringkasan Aktivitas</h2></div><span class="section-note">Dihitung dari history browser ini</span></div><div class="analytics-grid"><article class="analytics-card"><span>Total Nilai</span><strong id="aRevenue">Rp0</strong><small>Akumulasi transaksi tersimpan</small></article><article class="analytics-card"><span>Total Transaksi</span><strong id="aOrders">0</strong><small>Jumlah history tersimpan</small></article><article class="analytics-card"><span>Rata-rata Order</span><strong id="aAverage">Rp0</strong><small>Nilai rata-rata per transaksi</small></article><article class="analytics-card"><span>Transaksi Selesai</span><strong id="aCompleted">0</strong><small>Status selesai / sudah bayar</small></article></div></section>
+    <section class="analytics-section" aria-labelledby="analyticsTitle">
+      <div class="section-heading">
+        <div><span class="section-kicker">ANALYTICS</span><h2 id="analyticsTitle">Ringkasan Aktivitas</h2></div>
+        <span class="section-note">Dihitung dari history browser ini</span>
+      </div>
+      <div class="analytics-grid">
+        <article class="analytics-card"><span>Total Nilai</span><strong id="aRevenue">Rp0</strong><small>Akumulasi transaksi tersimpan</small></article>
+        <article class="analytics-card"><span>Total Transaksi</span><strong id="aOrders">0</strong><small>Jumlah history tersimpan</small></article>
+        <article class="analytics-card"><span>Rata-rata Order</span><strong id="aAverage">Rp0</strong><small>Nilai rata-rata per transaksi</small></article>
+        <article class="analytics-card"><span>Transaksi Selesai</span><strong id="aCompleted">0</strong><small>Status selesai / sudah bayar</small></article>
+      </div>
+    </section>
 
     <section id="app" class="app-grid">
-      <section class="panel order-panel"><div class="panel-head"><div><span class="section-kicker">TRANSAKSI AKTIF</span><h2>Data Pesanan</h2><p>Input pesanan customer dan sistem akan menghitung pembagian biaya secara otomatis.</p></div><span id="draftStateText" class="save-pill"><span></span> Draft tersimpan otomatis</span></div><div class="panel-body">
-        <div class="meta-grid"><label class="field"><span>No. Transaksi</span><input id="orderNo" readonly></label><label class="field"><span>Tanggal</span><input id="orderDate" type="date"></label><label class="field"><span>Status</span><select id="orderStatus"><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select></label></div>
-        <div class="charges-grid"><label class="field"><span>Ongkir Total</span><div class="money-field"><span>Rp</span><input id="shipping" inputmode="numeric" value="0"></div></label><label class="field"><span>Diskon / Voucher</span><div class="money-field"><span>Rp</span><input id="discount" inputmode="numeric" value="0"></div></label><label class="field"><span>Total Aplikasi <em>opsional</em></span><div class="money-field"><span>Rp</span><input id="appTotal" inputmode="numeric" placeholder="Untuk validasi"></div></label></div>
-        <div class="toolbar" aria-label="Aksi transaksi"><button class="btn primary" type="button" data-action="add-row">＋ Tambah Pesanan</button><button class="btn" type="button" data-action="save-history">✓ Simpan</button><button class="btn" type="button" data-action="copy-order">⧉ Copy</button><button class="btn" type="button" data-action="download-receipt">⇩ Struk PNG</button><button class="btn" type="button" data-action="print">⌁ Print</button><span class="toolbar-spacer"></span><button class="btn subtle" type="button" data-action="export-csv">CSV</button><button class="btn subtle" type="button" data-action="load-demo">Demo</button><button class="btn danger" type="button" data-action="new-order">Pesanan Baru</button></div>
-        <div class="table-card"><div class="table-scroll"><table><thead><tr><th class="col-no">No</th><th>Nama Cust</th><th>Nama Pesanan</th><th class="num">Harga</th><th class="num">Ongkir</th><th class="num">Biaya Custom</th><th class="num">Disc</th><th class="num">Total</th><th class="col-actions">Aksi</th></tr></thead><tbody id="rows"></tbody><tfoot><tr><td colspan="3">TOTAL</td><td class="num" id="tPrice">Rp0</td><td class="num" id="tShip">Rp0</td><td class="num" id="tOther">Rp0</td><td class="num" id="tDisc">Rp0</td><td class="num strong" id="tFinal">Rp0</td><td></td></tr></tfoot></table></div></div>
-      </div></section>
+      <section class="panel order-panel">
+        <div class="panel-head">
+          <div><span class="section-kicker">TRANSAKSI AKTIF</span><h2>Data Pesanan</h2><p>Input pesanan customer dan sistem akan menghitung pembagian biaya secara otomatis.</p></div>
+          <span id="draftStateText" class="save-pill"><span></span> Draft tersimpan otomatis</span>
+        </div>
+        <div class="panel-body">
+          <div class="meta-grid">
+            <label class="field"><span>No. Transaksi</span><input id="orderNo" readonly></label>
+            <label class="field"><span>Tanggal</span><input id="orderDate" type="date"></label>
+            <label class="field"><span>Jam Dibuat</span><input id="orderTime" type="time" readonly></label>
+            <label class="field"><span>Status</span><select id="orderStatus"><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select></label>
+          </div>
 
-      <aside class="panel summary-panel"><div class="panel-head compact"><div><span class="section-kicker">RINGKASAN</span><h2>Total Pesanan</h2></div><div class="summary-symbol">∑</div></div><div class="panel-body"><div class="metric-grid"><div class="metric"><span>Subtotal</span><strong id="kPrice">Rp0</strong></div><div class="metric"><span>Biaya Tambahan</span><strong id="kFees">Rp0</strong></div><div class="metric"><span>Diskon</span><strong id="kDisc">Rp0</strong></div><div class="metric"><span>Jumlah Item</span><strong id="kItems">0</strong></div><div class="metric metric-wide"><span>Jumlah Customer</span><strong id="kPeople">0</strong></div></div><div class="grand-card"><div><span>Total Dibayar</span><small>Grand total transaksi</small></div><strong id="kFinal">Rp0</strong></div><div id="validation" class="validation success">Perhitungan siap.</div>
-        <div class="payment-card"><div class="payment-head"><div><span class="section-kicker">PEMBAYARAN</span><strong id="paymentPreview">Transfer Bank</strong><small id="paymentNamePreview">DK SHOP DEMO</small></div><button class="btn small" type="button" data-action="copy-account">Salin</button></div><label class="field"><span>Metode</span><select id="paymentMethod"><option>Transfer Bank</option><option>BCA</option><option>BRI</option><option>Mandiri</option><option>DANA</option><option>GoPay</option><option>OVO</option><option>QRIS</option><option>Cash</option></select></label><label id="paymentAccountField" class="field"><span>Nomor / ID</span><input id="paymentAccount" value="" placeholder="Opsional"></label><label class="field"><span>Atas Nama / Keterangan</span><input id="paymentName" value="DK SHOP DEMO" placeholder="Opsional"></label></div>
-        <div class="method-note"><span>i</span><div><strong>Metode pembagian</strong><p>Largest remainder memastikan pembagian ongkir dan diskon tetap sama persis dengan total input.</p></div></div><details class="settings-card"><summary>Pengaturan lokal</summary><p>Nomor transaksi dan history tersimpan di browser ini.</p><button class="btn danger full" type="button" data-action="reset-sequence">Reset Nomor Transaksi</button></details>
-      </div></aside>
+          <div class="charges-grid">
+            <label class="field"><span>Ongkir Total</span><div class="money-field"><span>Rp</span><input id="shipping" inputmode="numeric" value="0"></div></label>
+            <label class="field"><span>Diskon / Voucher</span><div class="money-field"><span>Rp</span><input id="discount" inputmode="numeric" value="0"></div></label>
+            <label class="field"><span>Total Aplikasi <em>opsional</em></span><div class="money-field"><span>Rp</span><input id="appTotal" inputmode="numeric" placeholder="Untuk validasi"></div></label>
+          </div>
+
+          <div class="toolbar" aria-label="Aksi transaksi">
+            <button class="btn primary" type="button" data-action="add-row">＋ Tambah Pesanan</button>
+            <button class="btn" type="button" data-action="save-history">✓ Simpan</button>
+            <button class="btn" type="button" data-action="copy-order">⧉ Copy</button>
+            <button class="btn" type="button" data-action="download-receipt">⇩ Struk PNG</button>
+            <button class="btn" type="button" data-action="print">⌁ Print</button>
+            <span class="toolbar-spacer"></span>
+            <button class="btn subtle" type="button" data-action="export-csv">CSV</button>
+            <button class="btn subtle" type="button" data-action="load-demo">Demo</button>
+            <button class="btn danger" type="button" data-action="new-order">Pesanan Baru</button>
+          </div>
+
+          <div class="table-card">
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th class="col-no">No</th><th>Nama Cust</th><th>Nama Pesanan</th><th class="num">Harga</th><th class="num">Ongkir</th><th class="num">Biaya Custom</th><th class="num">Disc</th><th class="num">Total</th><th class="col-actions">Aksi</th></tr></thead>
+                <tbody id="rows"></tbody>
+                <tfoot><tr><td colspan="3">TOTAL</td><td class="num" id="tPrice">Rp0</td><td class="num" id="tShip">Rp0</td><td class="num" id="tOther">Rp0</td><td class="num" id="tDisc">Rp0</td><td class="num strong" id="tFinal">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel summary-panel">
+        <div class="panel-head compact"><div><span class="section-kicker">RINGKASAN</span><h2>Total Pesanan</h2></div><div class="summary-symbol">∑</div></div>
+        <div class="panel-body">
+          <div class="metric-grid">
+            <div class="metric"><span>Subtotal</span><strong id="kPrice">Rp0</strong></div>
+            <div class="metric"><span>Biaya Tambahan</span><strong id="kFees">Rp0</strong></div>
+            <div class="metric"><span>Diskon</span><strong id="kDisc">Rp0</strong></div>
+            <div class="metric"><span>Jumlah Item</span><strong id="kItems">0</strong></div>
+            <div class="metric metric-wide"><span>Jumlah Customer</span><strong id="kPeople">0</strong></div>
+          </div>
+          <div class="grand-card"><div><span>Total Dibayar</span><small>Grand total transaksi</small></div><strong id="kFinal">Rp0</strong></div>
+          <div id="validation" class="validation success">Perhitungan siap.</div>
+
+          <div class="payment-card">
+            <div class="payment-head"><div><span class="section-kicker">PEMBAYARAN</span><strong id="paymentPreview">Transfer Bank</strong><small id="paymentNamePreview">DK SHOP DEMO</small></div><button class="btn small" type="button" data-action="copy-account">Salin</button></div>
+            <label class="field"><span>Metode</span><select id="paymentMethod"><option>Transfer Bank</option><option>BCA</option><option>BRI</option><option>Mandiri</option><option>DANA</option><option>GoPay</option><option>OVO</option><option>QRIS</option><option>Cash</option></select></label>
+            <label id="paymentAccountField" class="field"><span>Nomor / ID</span><input id="paymentAccount" value="" placeholder="Opsional"></label>
+            <label class="field"><span>Atas Nama / Keterangan</span><input id="paymentName" value="DK SHOP DEMO" placeholder="Opsional"></label>
+          </div>
+
+          <div class="method-note"><span>i</span><div><strong>Metode pembagian</strong><p>Largest remainder memastikan pembagian ongkir dan diskon tetap sama persis dengan total input.</p></div></div>
+          <details class="settings-card"><summary>Pengaturan lokal</summary><p>Nomor transaksi dan history tersimpan di browser ini.</p><button class="btn danger full" type="button" data-action="reset-sequence">Reset Nomor Transaksi</button></details>
+        </div>
+      </aside>
     </section>
 
-    <section id="history" class="panel history-panel"><div class="panel-head history-head"><div><span class="section-kicker">TRACKING</span><h2>History Pesanan</h2><p>Cari, filter, buka ulang, copy, download, atau hapus transaksi sebelumnya.</p></div><div class="history-controls"><input id="historySearch" class="search-input" type="search" placeholder="Cari transaksi / customer / item..."><select id="historyStatus" class="compact-select"><option value="all">Semua status</option><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select><select id="historySort" class="compact-select"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="highest">Nominal terbesar</option><option value="lowest">Nominal terkecil</option></select><button class="btn danger small" type="button" data-action="clear-history">Hapus Semua</button></div></div><div class="panel-body"><div class="history-stats"><span id="historyCount">0 transaksi tersimpan</span><span id="historyValue">Total Rp0</span></div><div id="historyList" class="history-list"></div></div></section>
+    <section id="history" class="panel history-panel">
+      <div class="panel-head history-head">
+        <div><span class="section-kicker">TRACKING</span><h2>History Pesanan</h2><p>Cari, filter, buka ulang, copy, download, atau hapus transaksi sebelumnya.</p></div>
+        <div class="history-controls">
+          <input id="historySearch" class="search-input" type="search" placeholder="Cari transaksi / customer / item...">
+          <select id="historyStatus" class="compact-select"><option value="all">Semua status</option><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select>
+          <select id="historySort" class="compact-select"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="highest">Nominal terbesar</option><option value="lowest">Nominal terkecil</option></select>
+          <button class="btn danger small" type="button" data-action="clear-history">Hapus Semua</button>
+        </div>
+      </div>
+      <div class="panel-body"><div class="history-stats"><span id="historyCount">0 transaksi tersimpan</span><span id="historyValue">Total Rp0</span></div><div id="historyList" class="history-list"></div></div>
+    </section>
 
-    <section class="about-project"><div><span class="section-kicker">ABOUT THIS PROJECT</span><h2>Dibuat sebagai portfolio aplikasi transaksi ringan.</h2></div><p>DK SHOP menggunakan HTML, CSS, Vanilla JavaScript, LocalStorage, dan Canvas API. Versi ini berjalan sepenuhnya di browser sehingga cocok sebagai demo frontend. Pengembangan berikutnya dapat menambahkan autentikasi dan sinkronisasi database.</p></section>
+    <section class="about-project">
+      <div><span class="section-kicker">ABOUT THIS PROJECT</span><h2>Dibuat sebagai portfolio aplikasi transaksi ringan.</h2></div>
+      <p>DK SHOP menggunakan HTML, CSS, Vanilla JavaScript, LocalStorage, dan Canvas API. Versi ini berjalan sepenuhnya di browser sehingga cocok sebagai demo frontend. Pengembangan berikutnya dapat menambahkan autentikasi dan sinkronisasi database.</p>
+    </section>
+
     <footer class="site-footer"><div class="footer-brand"><span>DK</span><div><strong>DK SHOP</strong><small>Smart Order Split</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
   </main>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div><script src="assets/js/app.js" defer></script>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
 </body>
 </html>
