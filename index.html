@@ -9,17 +9,19 @@
   <meta property="og:description" content="Portfolio web app untuk pembagian biaya pesanan, history transaksi, analytics, dan struk digital.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dikafauzi.github.io/dk-shop-portfolio/">
+  <meta property="og:image" content="https://dikafauzi.github.io/dk-shop-portfolio/assets/icons/dk-shop-logo.png">
   <title>DK SHOP — Smart Order Split</title>
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/motion.css">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="preload" href="assets/icons/dk-shop-logo.png" as="image">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.5.0">
+  <link rel="stylesheet" href="assets/css/motion.css?v=1.5.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
   <div class="ambient ambient-b"></div>
 
   <div id="printReceipt" class="print-receipt" aria-hidden="true">
-    <div class="receipt-logo">DK</div>
+    <img class="receipt-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP">
     <div class="receipt-store">DK SHOP</div>
     <div class="receipt-title">STRUK DIGITAL</div>
     <div id="printMeta" class="receipt-meta"></div>
@@ -34,7 +36,7 @@
   </div>
 
   <header class="topbar">
-    <a class="nav-brand" href="#top" aria-label="DK SHOP home"><span>DK</span><b>DK SHOP</b></a>
+    <a class="nav-brand" href="#top" aria-label="DK SHOP home"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt=""><b>DK SHOP</b></a>
     <nav class="nav-links" aria-label="Navigasi utama">
       <a href="#features">Fitur</a>
       <a href="#app">Aplikasi</a>
@@ -62,7 +64,7 @@
       </div>
       <div class="hero-showcase" aria-hidden="true">
         <div class="showcase-card main-card">
-          <div class="showcase-head"><span>DK SHOP</span><span class="status-chip">LIVE</span></div>
+          <div class="showcase-head"><span class="showcase-brand"><img src="assets/icons/dk-shop-logo.png" alt="">DK SHOP</span><span class="status-chip">LIVE</span></div>
           <div class="showcase-total"><small>Total Pesanan</small><strong>Rp186.000</strong></div>
           <div class="showcase-list">
             <div><span>Ayam Geprek</span><b>Rp62.000</b></div>
@@ -102,6 +104,10 @@
           <span id="draftStateText" class="save-pill"><span></span> Draft tersimpan otomatis</span>
         </div>
         <div class="panel-body">
+          <div id="editBanner" class="edit-banner" hidden>
+            <div><strong id="editBannerTitle">Mode Edit</strong><span>Perubahan akan memperbarui transaksi yang sama.</span></div>
+            <label class="field"><span>Alasan Edit <em>opsional</em></span><input id="editReason" maxlength="160" placeholder="Contoh: koreksi harga atau nama pesanan"></label>
+          </div>
           <div class="meta-grid">
             <label class="field"><span>No. Transaksi</span><input id="orderNo" readonly></label>
             <label class="field"><span>Tanggal</span><input id="orderDate" type="date"></label>
@@ -117,7 +123,8 @@
 
           <div class="toolbar" aria-label="Aksi transaksi">
             <button class="btn primary" type="button" data-action="add-row">＋ Tambah Pesanan</button>
-            <button class="btn" type="button" data-action="save-history">✓ Simpan</button>
+            <button id="saveButton" class="btn" type="button" data-action="save-history">✓ Simpan</button>
+            <button id="cancelEditButton" class="btn subtle" type="button" data-action="cancel-edit" hidden>Batal Edit</button>
             <button class="btn" type="button" data-action="copy-order">⧉ Copy</button>
             <button class="btn" type="button" data-action="download-receipt">⇩ Struk PNG</button>
             <button class="btn" type="button" data-action="print">⌁ Print</button>
@@ -183,11 +190,12 @@
       <p>DK SHOP menggunakan HTML, CSS, Vanilla JavaScript, LocalStorage, dan Canvas API. Versi ini berjalan sepenuhnya di browser sehingga cocok sebagai demo frontend. Pengembangan berikutnya dapat menambahkan autentikasi dan sinkronisasi database.</p>
     </section>
 
-    <footer class="site-footer"><div class="footer-brand"><span>DK</span><div><strong>DK SHOP</strong><small>Smart Order Split</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
+    <footer class="site-footer"><div class="footer-brand"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP"><div><strong>DK SHOP</strong><small>Smart Order Split • v1.5.0</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
   </main>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/motion.js" defer></script>
+  <script src="assets/js/core.js?v=1.5.0" defer></script>
+  <script src="assets/js/app.js?v=1.5.0" defer></script>
+  <script src="assets/js/motion.js?v=1.5.0" defer></script>
 </body>
 </html>

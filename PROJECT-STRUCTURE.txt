@@ -1,13 +1,25 @@
 dk-shop-portfolio/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── index.html
 ├── README.md
 ├── CHANGELOG.md
 ├── PROJECT-STRUCTURE.txt
 ├── .gitignore
+├── docs/
+│   └── screenshots/
+│       └── digital-receipt.png
+├── tests/
+│   └── core.test.js
 └── assets/
     ├── css/
+    │   ├── motion.css
     │   └── styles.css
     ├── icons/
-    │   └── favicon.svg
+    │   ├── dk-shop-logo.png
+    │   └── favicon.png
     └── js/
-        └── app.js
+        ├── app.js
+        ├── core.js
+        └── motion.js
