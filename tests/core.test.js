@@ -1,5 +1,7 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
 const core=require('../assets/js/core.js');
 
 test('largest remainder preserves the exact total',()=>{
@@ -45,4 +47,10 @@ test('receipt edit info appears only for edited transactions',()=>{
   assert.deepEqual(core.receiptEditInfo({editReason:' Koreksi harga ',revision:2,updatedAt:'2026-09-14T03:00:00.000Z'}),{
     reason:'Koreksi harga',revision:2,updatedAt:'2026-09-14T03:00:00.000Z'
   });
+});
+
+test('history provides a print action for the selected transaction',()=>{
+  const app=fs.readFileSync(path.join(__dirname,'../assets/js/app.js'),'utf8');
+  assert.match(app,/data-history-action="print"/);
+  assert.match(app,/printReceipt\(transaction\)/);
 });
