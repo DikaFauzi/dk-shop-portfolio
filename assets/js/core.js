@@ -53,5 +53,13 @@
     return'"'+text.replace(/"/g,'""')+'"';
   }
 
-  return{MAX_AMOUNT,rawNumber,normalizeAmount,transactionNumber,highestTransactionNumber,nextTransactionNumber,sequenceAfterSave,largestRemainder,sanitizeCsvCell};
+  function receiptEditInfo(transaction){
+    const reason=String(transaction?.editReason??'').trim();
+    const revision=Math.max(0,Math.trunc(Number(transaction?.revision)||0));
+    const updatedAt=String(transaction?.updatedAt??'').trim();
+    if(!reason&&!updatedAt&&revision===0)return null;
+    return{reason,revision,updatedAt};
+  }
+
+  return{MAX_AMOUNT,rawNumber,normalizeAmount,transactionNumber,highestTransactionNumber,nextTransactionNumber,sequenceAfterSave,largestRemainder,sanitizeCsvCell,receiptEditInfo};
 });

@@ -39,3 +39,10 @@ test('CSV cells are quoted and spreadsheet formulas are neutralized',()=>{
   assert.equal(core.sanitizeCsvCell('=HYPERLINK("x")'),'"\'=HYPERLINK(""x"")"');
   assert.equal(core.sanitizeCsvCell('+62812'),'"\'+62812"');
 });
+
+test('receipt edit info appears only for edited transactions',()=>{
+  assert.equal(core.receiptEditInfo({orderNo:'DK-TRX-000001'}),null);
+  assert.deepEqual(core.receiptEditInfo({editReason:' Koreksi harga ',revision:2,updatedAt:'2026-09-14T03:00:00.000Z'}),{
+    reason:'Koreksi harga',revision:2,updatedAt:'2026-09-14T03:00:00.000Z'
+  });
+});
