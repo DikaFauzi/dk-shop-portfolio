@@ -30,11 +30,37 @@ Pembelian bersama sering membutuhkan pembagian ongkir dan voucher yang adil. Pem
 - Dark mode dan layout responsif
 - Logo resmi DK SHOP pada website dan struk
 
-## Screenshot
+## Screenshots
 
-### Struk digital
+### Landing Page
+Hero utama DK SHOP dengan navigasi, preview transaksi, dan CTA menuju aplikasi.
 
-![Contoh struk digital DK SHOP](docs/screenshots/digital-receipt.png)
+![Landing Page](docs/screenshots/landing-page.png)
+
+### Dashboard Overview
+Tampilan utama Smart Order Split yang menampilkan analytics, data pesanan, validasi, dan ringkasan pembayaran.
+
+![Dashboard Overview](docs/screenshots/dashboard-overview.png)
+
+### Order Table
+Tabel transaksi untuk mengelola customer, item, harga, ongkir, biaya custom, diskon, dan total akhir.
+
+![Order Table](docs/screenshots/order-table.png)
+
+### Payment & Local Settings
+Panel pembayaran dan pengaturan lokal untuk metode pembayaran serta kontrol sequence transaksi.
+
+![Payment & Settings](docs/screenshots/payment-settings.png)
+
+### Transaction History
+History transaksi dengan pencarian, filter status, sorting, edit, copy, print, dan delete.
+
+![Transaction History](docs/screenshots/history-transactions.png)
+
+### Digital Receipt
+Struk digital DK SHOP yang dapat di-download sebagai PNG atau dicetak sebagai thermal receipt.
+
+![Digital Receipt](docs/screenshots/digital-receipt.png)
 
 ## Cara Menjalankan
 
