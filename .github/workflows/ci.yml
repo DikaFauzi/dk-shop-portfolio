@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/js/core.js
+          node --check assets/js/app.js
+          node --check assets/js/motion.js
+          node --check assets/js/catalog.js
+          node --check assets/js/settings.js
+          node --check assets/js/menu.js
+          node --check assets/js/printer-client.js
+          node --check tests/server.js
+          node --check playwright.config.js
+          for file in tests/ui/*.js; do node --check "$file"; done
+
+      - name: Install test dependencies
+        run: npm install
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run core regression
+        run: npm test
+
+      - name: Run full UI regression
+        run: npm run test:ui
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore

@@ -1,0 +1,126 @@
+
+/* DK SHOP separated menu views v1.7.0 */
+.page-view{display:block;animation:pageIn .18s ease both}
+.page-view[hidden]{display:none!important}
+.main-menu a{position:relative;padding:9px 4px;color:var(--muted)}
+.main-menu a.active{color:var(--ink)}
+.main-menu a.active:after{content:"";position:absolute;left:2px;right:2px;bottom:0;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+.page-view[data-page="app"]>.app-grid,.page-view[data-page="catalog"]>.catalog-section,.page-view[data-page="history"]>.history-panel{margin-top:18px}
+.page-view[data-page="app"]:before,.page-view[data-page="catalog"]:before,.page-view[data-page="history"]:before{display:block;margin:8px 2px 0;font-size:10px;font-weight:900;letter-spacing:.13em;color:var(--brand);text-transform:uppercase}
+.page-view[data-page="app"]:before{content:"MENU / APLIKASI"}
+.page-view[data-page="catalog"]:before{content:"MENU / KATALOG"}
+.page-view[data-page="history"]:before{content:"MENU / HISTORY"}
+@keyframes pageIn{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:760px){.topbar{flex-wrap:wrap}.main-menu{order:3;width:100%;overflow-x:auto;gap:18px;padding-bottom:2px;scrollbar-width:none}.main-menu::-webkit-scrollbar{display:none}.main-menu a{white-space:nowrap}.site-shell{padding-top:16px}}
+
+/* ===== Topbar auto-scale v1.7.3 ===== */
+.topbar{
+  width:min(96vw, 1680px);
+  max-width:none;
+  min-height:clamp(64px,4.6vw,84px);
+  padding:clamp(8px,0.85vw,14px) clamp(10px,1.25vw,22px);
+  gap:clamp(8px,1vw,18px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;
+}
+.nav-brand{
+  justify-self:start;
+  min-width:0;
+  gap:clamp(7px,.7vw,12px);
+  padding:clamp(5px,.5vw,8px) clamp(6px,.65vw,10px);
+}
+.brand-logo{
+  width:clamp(34px,2.5vw,44px);
+  height:clamp(34px,2.5vw,44px);
+  flex-basis:clamp(34px,2.5vw,44px);
+}
+.nav-brand b{
+  font-size:clamp(13px,1vw,16px);
+  white-space:nowrap;
+}
+.main-menu{
+  justify-self:center;
+  width:max-content;
+  max-width:100%;
+  gap:clamp(2px,.45vw,8px);
+  padding:clamp(3px,.35vw,6px);
+  white-space:nowrap;
+}
+.main-menu a{
+  padding:clamp(7px,.65vw,11px) clamp(9px,.9vw,16px);
+  font-size:clamp(11px,.78vw,13px);
+}
+.nav-actions{
+  justify-self:end;
+  min-width:0;
+  gap:clamp(5px,.55vw,10px);
+  padding:clamp(2px,.25vw,4px);
+}
+.nav-actions .btn{
+  min-height:clamp(34px,2.6vw,42px);
+  padding:clamp(7px,.6vw,10px) clamp(9px,.9vw,16px);
+  font-size:clamp(10px,.72vw,12px);
+  white-space:nowrap;
+}
+
+/* Laptop / compact desktop: scale before wrapping. */
+@media (max-width:1100px){
+  .topbar{width:calc(100% - 20px);grid-template-columns:auto minmax(0,1fr) auto}
+  .main-menu{justify-self:center}
+  .nav-brand{padding-right:4px}
+}
+
+/* Tablet: keep one row as long as practical. */
+@media (max-width:860px){
+  .topbar{width:calc(100% - 16px);gap:6px;padding:9px 10px}
+  .main-menu a{padding:8px 9px;font-size:11px}
+  .nav-actions{gap:4px}
+  .nav-actions .btn{padding:8px 9px}
+  .nav-brand b{font-size:13px}
+}
+
+/* Mobile: brand/actions on first row, menu gets its own clean scroll row. */
+@media (max-width:760px){
+  .topbar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"brand actions" "menu menu";
+    row-gap:7px;
+    min-height:auto;
+    width:calc(100% - 12px);
+    padding:8px 9px 7px;
+  }
+  .nav-brand{grid-area:brand;justify-self:start;padding:3px 4px}
+  .nav-actions{grid-area:actions;justify-self:end}
+  .main-menu{
+    grid-area:menu;
+    justify-self:stretch;
+    width:100%;
+    max-width:100%;
+    display:flex;
+    overflow-x:auto;
+    justify-content:flex-start;
+    gap:4px;
+    padding:4px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .main-menu::-webkit-scrollbar{display:none}
+  .main-menu a{flex:0 0 auto;padding:8px 11px}
+  .brand-logo{width:34px;height:34px;flex-basis:34px}
+  .nav-brand b{display:block;font-size:12px}
+  .desktop-only{display:none!important}
+  .nav-actions .btn{min-height:34px;padding:7px 9px;font-size:10px}
+}
+
+@media (max-width:420px){
+  .nav-brand b{display:none}
+  .topbar{width:calc(100% - 8px);top:4px;border-radius:16px}
+  .main-menu a{padding:7px 10px;font-size:10.5px}
+}
+
+/* History report action */
+@media(max-width:760px){
+  #historyReportButton{grid-column:1/-1;width:100%}
+}

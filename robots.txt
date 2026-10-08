@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dikafauzi.github.io/dk-shop-portfolio/sitemap.xml

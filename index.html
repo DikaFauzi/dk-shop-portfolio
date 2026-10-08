@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="DK SHOP adalah portfolio web app karya Dika Fauzi untuk membagi ongkir dan diskon secara presisi, mengelola katalog, menyimpan history transaksi, membuat laporan Excel, dan struk digital langsung di browser.">
+  <meta property="og:title" content="DK SHOP — Smart Order Split | Dika Fauzi">
+  <meta property="og:description" content="DK SHOP adalah portfolio web app karya Dika Fauzi untuk membagi ongkir dan diskon secara presisi, mengelola katalog, menyimpan history transaksi, membuat laporan Excel, dan struk digital langsung di browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dikafauzi.github.io/dk-shop-portfolio/">
+  <meta property="og:image" content="https://dikafauzi.github.io/dk-shop-portfolio/assets/icons/dk-shop-logo.png">
+  <meta name="author" content="Dika Fauzi">
+  <meta name="creator" content="Dika Fauzi">
+  <meta name="application-name" content="DK SHOP">
+  <meta name="dk-shop-build" content="2.0.5">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://dikafauzi.github.io/dk-shop-portfolio/">
+  <meta property="og:site_name" content="DK SHOP">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:image:alt" content="DK SHOP — Smart Order Split by Dika Fauzi">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DK SHOP — Smart Order Split | Dika Fauzi">
+  <meta name="twitter:description" content="DK SHOP adalah portfolio web app karya Dika Fauzi untuk membagi ongkir dan diskon secara presisi, mengelola katalog, menyimpan history transaksi, membuat laporan Excel, dan struk digital langsung di browser.">
+  <meta name="twitter:image" content="https://dikafauzi.github.io/dk-shop-portfolio/assets/icons/dk-shop-logo.png">
+  <meta name="twitter:image:alt" content="DK SHOP — Smart Order Split by Dika Fauzi">
+  <link rel="manifest" href="site.webmanifest">
+  <title>DK SHOP — Smart Order Split | Dika Fauzi</title>
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
+  <link rel="preload" href="assets/icons/dk-shop-logo.png" as="image">
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/motion.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/catalog.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/menu.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/analytics-dashboard.css?v=2.0.5">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DK SHOP",
+  "alternateName": "DK SHOP — Smart Order Split",
+  "url": "https://dikafauzi.github.io/dk-shop-portfolio/",
+  "description": "DK SHOP adalah portfolio web app karya Dika Fauzi untuk membagi ongkir dan diskon secara presisi, mengelola katalog, menyimpan history transaksi, membuat laporan Excel, dan struk digital langsung di browser.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web Browser",
+  "author": {
+    "@type": "Person",
+    "name": "Dika Fauzi"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Dika Fauzi"
+  },
+  "softwareVersion": "2.0.5",
+  "isAccessibleForFree": true,
+  "inLanguage": "id-ID"
+}
+  </script>
+  <link rel="stylesheet" href="assets/css/settings.css?v=2.0.5">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <div id="printReceipt" class="print-receipt" aria-hidden="true">
+    <img class="receipt-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP">
+    <div class="receipt-store">DK SHOP</div>
+    <div class="receipt-title">STRUK DIGITAL</div>
+    <div id="printMeta" class="receipt-meta"></div>
+    <div id="printEditInfo" class="receipt-edit-info" hidden></div>
+    <div class="receipt-rule"></div>
+    <div id="printItems"></div>
+    <div class="receipt-rule"></div>
+    <div id="printSummary"></div>
+    <div class="receipt-rule"></div>
+    <div class="receipt-grand"><span>TOTAL BAYAR</span><strong id="printGrandTotal">Rp0</strong></div>
+    <div class="receipt-rule"></div>
+    <div id="printPayment" class="receipt-foot"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="nav-brand" href="#dashboard" data-menu="dashboard" aria-label="DK SHOP home"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt=""><b>DK SHOP</b></a>
+    <nav class="nav-links main-menu" aria-label="Navigasi utama">
+      <a href="#dashboard" data-menu="dashboard">Dashboard</a>
+      <a href="#app" data-menu="app">Aplikasi</a>
+      <a href="#catalog" data-menu="catalog">Katalog</a>
+      <a href="#customer" data-menu="customer">Customer</a>
+      <a href="#history" data-menu="history">History</a>
+    </nav>
+    <div class="nav-actions">
+      <span id="profileNameChip" class="profile-chip" title="Profil lokal">DK User</span>
+      <a href="#settings" class="settings-topbar-btn" data-menu="settings" aria-label="Buka pengaturan">⚙ Setting</a>
+      <a class="btn ghost desktop-only" href="https://github.com/DikaFauzi/dk-shop-portfolio" target="_blank" rel="noopener">GitHub</a>
+      <button id="themeToggle" class="btn ghost" type="button" aria-label="Ganti tema">Tema Gelap</button>
+    </div>
+  </header>
+
+  <main id="top" class="site-shell">
+    <div class="page-view" data-page="dashboard">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> PORTFOLIO PROJECT • FRONTEND WEB APP</div>
+        <h1>Split pesanan.<br><span>Hitung presisi.</span><br>Berbagi jadi mudah.</h1>
+        <p>DK SHOP membantu membagi ongkir dan diskon secara proporsional, mencatat transaksi, menyimpan history, dan membuat struk digital — semuanya langsung di browser.</p>
+        <div class="hero-cta">
+          <a class="btn primary large" href="#app" data-menu="app">Coba Aplikasi</a>
+          <button class="btn secondary large" type="button" data-action="load-demo">Muat Data Demo</button>
+        </div>
+        <div class="trust-row">
+          <span>✓ Tanpa server</span><span>✓ Local-first</span><span>✓ Pembulatan presisi</span>
+        </div>
+      </div>
+      <div class="hero-showcase" aria-hidden="true">
+        <div class="showcase-card main-card">
+          <div class="showcase-head"><span class="showcase-brand"><img src="assets/icons/dk-shop-logo.png" alt="">DK SHOP</span><span class="status-chip">LIVE</span></div>
+          <div class="showcase-total"><small>Total Pesanan</small><strong>Rp186.000</strong></div>
+          <div class="showcase-list">
+            <div><span>Ayam Geprek</span><b>Rp62.000</b></div>
+            <div><span>Nasi Goreng</span><b>Rp70.000</b></div>
+            <div><span>Es Kopi</span><b>Rp54.000</b></div>
+          </div>
+        </div>
+        <div class="float-card float-one"><span>Largest remainder</span><b>100% presisi</b></div>
+        <div class="float-card float-two"><span>Struk digital</span><b>PNG + Print</b></div>
+      </div>
+    </section>
+
+    <section id="features" class="feature-grid" aria-label="Fitur utama">
+      <article><span class="feature-icon">∑</span><div><h3>Smart Split</h3><p>Ongkir dan diskon dibagi proporsional sesuai harga item.</p></div></article>
+      <article><span class="feature-icon">◎</span><div><h3>Presisi Rupiah</h3><p>Metode largest remainder menjaga total pembagian tetap tepat.</p></div></article>
+      <article><span class="feature-icon">◫</span><div><h3>Digital Receipt</h3><p>Download struk PNG dan print thermal 80 mm langsung dari browser.</p></div></article>
+      <article><span class="feature-icon">⌁</span><div><h3>Local-first</h3><p>Draft, history, tema, dan nomor transaksi tersimpan di perangkat.</p></div></article>
+    </section>
+
+    <section class="analytics-section" aria-labelledby="analyticsTitle">
+      <div class="section-heading">
+        <div><span class="section-kicker">ANALYTICS</span><h2 id="analyticsTitle">Ringkasan Aktivitas</h2></div>
+        <span class="section-note">Bulan berjalan • transaksi batal tidak dihitung</span>
+      </div>
+
+      <div class="analytics-grid">
+        <article class="analytics-card">
+          <span>Total Transaksi Bulan Ini</span>
+          <strong id="aOrders">0</strong>
+          <small id="aOrdersNote">0 transaksi aktif bulan berjalan</small>
+        </article>
+        <article class="analytics-card">
+          <span>Total Customer Unik</span>
+          <strong id="aRevenue">0</strong>
+          <small id="aCustomerNote">Customer unik bulan berjalan</small>
+        </article>
+        <article class="analytics-card">
+          <span>Total Discount Distributed</span>
+          <strong id="aAverage">Rp0</strong>
+          <small id="aDiscountNote">Diskon dibagikan bulan berjalan</small>
+        </article>
+        <article class="analytics-card">
+          <span>Total Shipping Distributed</span>
+          <strong id="aCompleted">Rp0</strong>
+          <small id="aShippingNote">Ongkir dibagikan bulan berjalan</small>
+        </article>
+      </div>
+
+      <div class="analytics-trend-card">
+        <div class="analytics-trend-head">
+          <div>
+            <span class="section-kicker">MINI TREND</span>
+            <h3>7 hari terakhir</h3>
+          </div>
+          <div class="analytics-trend-summary">
+            <strong id="trendSevenTotal">Rp0</strong>
+            <small id="trendSevenCount">0 transaksi</small>
+          </div>
+        </div>
+        <div id="trendSevenDays" class="analytics-mini-chart" aria-label="Trend transaksi 7 hari terakhir"></div>
+      </div>
+    </section>
+
+
+
+    
+
+
+    <section class="about-project">
+      <div><span class="section-kicker">ABOUT THIS PROJECT</span><h2>Dibuat sebagai portfolio aplikasi transaksi ringan.</h2></div>
+      <p>DK SHOP menggunakan HTML, CSS, Vanilla JavaScript, LocalStorage, dan Canvas API. Versi ini berjalan sepenuhnya di browser sehingga cocok sebagai demo frontend. Pengembangan berikutnya dapat menambahkan autentikasi dan sinkronisasi database.</p>
+    </section>
+    
+      <section class="dashboard-recent" id="dashboardRecent">
+        <div class="dashboard-recent-head">
+          <div>
+            <span class="section-kicker">RECENT ACTIVITY</span>
+            <h3>Aktivitas Terbaru</h3>
+          </div>
+          <a href="#history" data-menu="history" class="dashboard-recent-link">Lihat History →</a>
+        </div>
+        <div id="dashboardRecentList" class="dashboard-recent-list"></div>
+      </section>
+
+    </div>
+
+    <div class="page-view" data-page="app" hidden>
+    <section id="app" class="app-grid">
+      <section class="panel order-panel">
+        <div class="panel-head">
+          <div><span class="section-kicker">TRANSAKSI AKTIF</span><h2>Data Pesanan</h2><p>Input pesanan customer dan sistem akan menghitung pembagian biaya secara otomatis.</p></div>
+          <span id="draftStateText" class="save-pill"><span></span> Draft tersimpan otomatis</span>
+        </div>
+        <div class="panel-body">
+          <div id="editBanner" class="edit-banner" hidden>
+            <div><strong id="editBannerTitle">Mode Edit</strong><span>Perubahan akan memperbarui transaksi yang sama.</span></div>
+            <label class="field"><span>Alasan Edit <em>opsional</em></span><input id="editReason" maxlength="160" placeholder="Contoh: koreksi harga atau nama pesanan"></label>
+          </div>
+          <div class="meta-grid">
+            <label class="field"><span>No. Transaksi</span><input id="orderNo" readonly></label>
+            <label class="field"><span>Tanggal</span><input id="orderDate" type="date"></label>
+            <label class="field"><span>Jam Dibuat</span><input id="orderTime" type="time" readonly></label>
+            <label class="field"><span>Status</span><select id="orderStatus"><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select></label>
+          </div>
+
+          <div class="charges-grid">
+            <label class="field"><span>Ongkir Total</span><div class="money-field"><span>Rp</span><input id="shipping" inputmode="numeric" value="0"></div></label>
+            <label class="field"><span>Diskon / Voucher</span><div class="money-field"><span>Rp</span><input id="discount" inputmode="numeric" value="0"></div></label>
+            <label class="field"><span>Total Aplikasi <em>opsional</em></span><div class="money-field"><span>Rp</span><input id="appTotal" inputmode="numeric" placeholder="Untuk validasi"></div></label>
+          </div>
+
+          <div class="toolbar" aria-label="Aksi transaksi">
+            <button class="btn primary" type="button" data-action="add-row">＋ Tambah Pesanan</button>
+            <button id="saveButton" class="btn" type="button" data-action="save-history">✓ Simpan</button>
+            <button id="cancelEditButton" class="btn subtle" type="button" data-action="cancel-edit" hidden>Batal Edit</button>
+            <button class="btn" type="button" data-action="copy-order">⧉ Copy</button>
+            <button class="btn" type="button" data-action="download-receipt">⇩ Struk PNG</button>
+            <button class="btn" type="button" data-action="print">⌁ Print</button>
+            <span class="toolbar-spacer"></span>
+            <button class="btn subtle" type="button" data-action="export-csv">CSV</button>
+            <button class="btn subtle" type="button" data-action="load-demo">Demo</button>
+            <button class="btn danger" type="button" data-action="new-order">Pesanan Baru</button>
+          </div>
+
+          <div class="table-card">
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th class="col-no">No</th><th>Nama Cust</th><th>Nama Pesanan</th><th class="num">Harga</th><th class="num">Ongkir</th><th class="num">Biaya Custom</th><th class="num">Disc</th><th class="num">Total</th><th class="col-actions">Aksi</th></tr></thead>
+                <tbody id="rows"></tbody>
+                <tfoot><tr><td colspan="3">TOTAL</td><td class="num" id="tPrice">Rp0</td><td class="num" id="tShip">Rp0</td><td class="num" id="tOther">Rp0</td><td class="num" id="tDisc">Rp0</td><td class="num strong" id="tFinal">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel summary-panel">
+        <div class="panel-head compact"><div><span class="section-kicker">RINGKASAN</span><h2>Total Pesanan</h2></div><div class="summary-symbol">∑</div></div>
+        <div class="panel-body">
+          <div class="metric-grid">
+            <div class="metric"><span>Subtotal</span><strong id="kPrice">Rp0</strong></div>
+            <div class="metric"><span>Biaya Tambahan</span><strong id="kFees">Rp0</strong></div>
+            <div class="metric"><span>Diskon</span><strong id="kDisc">Rp0</strong></div>
+            <div class="metric"><span>Jumlah Item</span><strong id="kItems">0</strong></div>
+            <div class="metric metric-wide"><span>Jumlah Customer</span><strong id="kPeople">0</strong></div>
+          </div>
+          <div class="grand-card"><div><span>Total Dibayar</span><small>Grand total transaksi</small></div><strong id="kFinal">Rp0</strong></div>
+          <div id="validation" class="validation success">Perhitungan siap.</div>
+
+          <div class="payment-card">
+            <div class="payment-head"><div><span class="section-kicker">PEMBAYARAN</span><strong id="paymentPreview">Transfer Bank</strong><small id="paymentNamePreview">DK SHOP DEMO</small></div><button class="btn small" type="button" data-action="copy-account">Salin</button></div>
+            <label class="field"><span>Metode</span><select id="paymentMethod"><option>Transfer Bank</option><option>BCA</option><option>BRI</option><option>Mandiri</option><option>DANA</option><option>GoPay</option><option>OVO</option><option>QRIS</option><option>Cash</option></select></label>
+            <label id="paymentAccountField" class="field"><span>Nomor / ID</span><input id="paymentAccount" value="" placeholder="Opsional"></label>
+            <label class="field"><span>Atas Nama / Keterangan</span><input id="paymentName" value="DK SHOP DEMO" placeholder="Opsional"></label>
+          </div>
+
+          <div class="method-note"><span>i</span><div><strong>Metode pembagian</strong><p>Largest remainder memastikan pembagian ongkir dan diskon tetap sama persis dengan total input.</p></div></div>
+          <details class="settings-card"><summary>Pengaturan lokal</summary><p>Nomor transaksi dan history tersimpan di browser ini.</p><button class="btn danger full" type="button" data-action="reset-sequence">Reset Nomor Transaksi</button></details>
+        </div>
+      </aside>
+    </section>
+
+    </div>
+
+    <div class="page-view" data-page="catalog" hidden>
+    <section id="catalog" class="panel catalog-section">
+      <div class="panel-head catalog-head">
+        <div>
+          <span class="section-kicker">MASTER DATA</span>
+          <h2>Katalog Produk</h2>
+          <p>Kelola produk dan harga. Produk aktif akan muncul otomatis sebagai pilihan pada field Nama Pesanan.</p>
+        </div>
+        <div class="catalog-head-actions">
+          <button id="catalogAddButton" class="btn primary" type="button">＋ Tambah Manual</button>
+          <button id="catalogHistoryButton" class="btn" type="button">↻ Ambil dari History</button>
+          <button id="catalogImportButton" class="btn" type="button">⇧ Import Excel</button>
+          <button id="catalogExportButton" class="btn" type="button">⇩ Export Excel</button>
+          <input id="catalogImportInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="catalog-summary">
+          <div class="catalog-stat"><span>Total Produk</span><strong id="catalogStatTotal">0</strong></div>
+          <div class="catalog-stat"><span>Produk Aktif</span><strong id="catalogStatActive">0</strong></div>
+          <div class="catalog-stat"><span>Kategori</span><strong id="catalogStatCategories">0</strong></div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <input id="catalogSearch" class="search-input" type="search" placeholder="Cari SKU, nama produk, kategori...">
+          <select id="catalogCategoryFilter" class="compact-select"><option value="all">Semua kategori</option></select>
+          <div class="catalog-toolbar-right">
+            <button id="catalogTemplateButton" class="btn subtle small" type="button">Contoh Excel</button>
+            <button id="catalogClearButton" class="btn danger small" type="button">Hapus Semua</button>
+          </div>
+        </div>
+
+        <div class="catalog-table">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>No</th><th>SKU</th><th>Nama Produk</th><th>Kategori</th><th class="num">Harga</th><th>Status</th><th>Aksi</th></tr>
+              </thead>
+              <tbody id="catalogRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="catalog-meta">
+          <span id="catalogCount">0 produk tersimpan lokal</span>
+          <span>Storage: browser / LocalStorage</span>
+        </div>
+        <div class="catalog-hint">
+          <span class="catalog-hint-icon">i</span>
+          <div><strong>Auto harga aktif.</strong> Klik <b>Ambil dari History</b> untuk membentuk katalog dari pesanan yang pernah tersimpan. Jika satu produk pernah memakai beberapa harga, sistem memakai harga transaksi terbaru. History lama tetap tidak diubah.</div>
+        </div>
+      </div>
+    </section>
+
+    <datalist id="catalogOptions"></datalist>
+
+    <div id="catalogModal" class="catalog-modal" hidden>
+      <div class="catalog-modal-card" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle">
+        <div class="catalog-modal-head">
+          <div><h3 id="catalogModalTitle">Tambah Produk</h3><p>Isi master produk dan harga jual.</p></div>
+          <button id="catalogModalClose" class="catalog-modal-close" type="button" aria-label="Tutup">×</button>
+        </div>
+        <form id="catalogForm" class="catalog-form">
+          <input id="catalogId" type="hidden">
+          <div class="catalog-form-grid">
+            <label class="field"><span>SKU <em>opsional</em></span><input id="catalogSku" maxlength="50" placeholder="Contoh: MKN-001"></label>
+            <label class="field"><span>Kategori</span><input id="catalogCategory" maxlength="80" value="Umum" placeholder="Makanan / Minuman"></label>
+            <label class="field wide"><span>Nama Produk</span><input id="catalogName" maxlength="160" required placeholder="Nama produk"></label>
+            <label class="field"><span>Harga</span><div class="money-field"><span>Rp</span><input id="catalogPrice" inputmode="numeric" required placeholder="0"></div></label>
+            <label class="field"><span>Status</span><span class="catalog-check"><input id="catalogActive" type="checkbox" checked> Produk aktif dan bisa dipilih</span></label>
+          </div>
+          <div class="catalog-modal-actions">
+            <button id="catalogModalCancel" class="btn subtle" type="button">Batal</button>
+            <button id="catalogSaveButton" class="btn primary" type="submit">Simpan Produk</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="catalogToast" role="status" aria-live="polite"></div>
+
+    </div>
+
+    
+    <div class="page-view" data-page="customer" hidden>
+      <section class="panel customer-page-panel">
+        <div class="panel-head">
+          <div>
+            <span class="section-kicker">MASTER DATA</span>
+            <h2>Customer</h2>
+            <p>Kelola nama customer dan nomor WhatsApp untuk kebutuhan broadcast pembayaran.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <section class="settings-card-block settings-card-wide">
+          <div class="settings-card-title">
+            <div class="settings-icon">👥</div>
+            <div>
+              <h3>Master Customer</h3>
+              <p>Daftar customer untuk kebutuhan broadcast pembayaran WhatsApp. Nama bisa diambil dari History, nomor WhatsApp dilengkapi manual.</p>
+            </div>
+          </div>
+
+          <div class="customer-toolbar">
+            <div class="customer-search-box">
+              <span class="customer-search-icon" aria-hidden="true">⌕</span>
+              <input id="customerSearch" placeholder="Cari nama customer atau nomor WhatsApp" autocomplete="off">
+              <button id="customerSearchClear" class="customer-search-clear" type="button" aria-label="Bersihkan pencarian" hidden>×</button>
+            </div>
+            <div class="settings-actions customer-toolbar-actions">
+              <button id="customerSyncHistory" class="btn" type="button">↻ Ambil dari History</button>
+              <button id="customerAddNew" class="btn primary" type="button">＋ Tambah Customer</button>
+            </div>
+          </div>
+
+          <div class="customer-form" id="customerForm" hidden>
+            <input type="hidden" id="customerEditId">
+            <div class="settings-fields two-col">
+              <label class="field"><span>Nama Customer</span><input id="customerName" maxlength="80" placeholder="Contoh: SARAH"></label>
+              <label class="field"><span>No. WhatsApp</span><input id="customerWhatsapp" inputmode="tel" maxlength="24" placeholder="Contoh: 6281234567890"></label>
+            </div>
+            <div class="settings-actions">
+              <button id="customerSave" class="btn primary" type="button">Simpan Customer</button>
+              <button id="customerCancel" class="btn" type="button">Batal</button>
+            </div>
+          </div>
+
+          <div class="customer-summary">
+            <div><span>Total Customer</span><strong id="customerTotal">0</strong></div>
+            <div><span>Sudah Ada WhatsApp</span><strong id="customerWithWhatsapp">0</strong></div>
+            <div><span>Belum Lengkap</span><strong id="customerWithoutWhatsapp">0</strong></div>
+          </div>
+
+          <div class="customer-table-wrap">
+            <table class="customer-table">
+              <thead><tr><th>No</th><th>Nama Customer</th><th>No. WhatsApp</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody id="customerTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="page-view" data-page="history" hidden>
+    <section id="history" class="panel history-panel">
+      <div class="panel-head history-head">
+        <div><span class="section-kicker">TRACKING</span><h2>History Pesanan</h2><p>Cari, filter, buka ulang, copy, download, atau hapus transaksi sebelumnya.</p></div>
+        <div class="history-controls">
+          <input id="historySearch" class="search-input" type="search" placeholder="Cari transaksi / customer / item...">
+          <select id="historyStatus" class="compact-select"><option value="all">Semua status</option><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select>
+          <select id="historySort" class="compact-select"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="highest">Nominal terbesar</option><option value="lowest">Nominal terkecil</option></select>
+          <button id="historyReportButton" class="btn primary small" type="button">⇩ Download Report Lengkap</button>
+          <button class="btn danger small" type="button" data-action="clear-history">Hapus Semua</button>
+        </div>
+      </div>
+      <div class="panel-body"><div class="history-stats"><span id="historyCount">0 transaksi tersimpan</span><span id="historyValue">Total Rp0</span></div><div id="historyList" class="history-list"></div></div>
+    </section>
+
+
+    </div>
+
+    
+  
+
+  <footer class="site-footer"><div class="footer-brand"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP"><div><strong>DK SHOP</strong><small>Smart Order Split • v2.0.5 LOCAL</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
+  
+    <div class="page-view" data-page="settings" hidden>
+<section id="settings" class="panel settings-page">
+      <div class="panel-head settings-head">
+        <div>
+          <span class="section-kicker">SETTINGS</span>
+          <h2>Pengaturan DK SHOP</h2>
+          <p>Kelola profil lokal dan koneksi printer Ethernet MINIPO.</p>
+        </div>
+      </div>
+      <div class="panel-body settings-grid">
+        <section class="settings-card-block">
+          <div class="settings-card-title">
+            <div class="settings-icon">👤</div>
+            <div><h3>Profil Akun</h3><p>Nama ini disimpan lokal di browser dan bisa diubah kapan saja.</p></div>
+          </div>
+          <div class="settings-fields">
+            <label class="field"><span>Nama Profil</span><input id="settingsProfileName" maxlength="60" placeholder="Contoh: Dika Fauzi"></label>
+            <label class="field"><span>Role / Keterangan <em>opsional</em></span><input id="settingsProfileRole" maxlength="60" placeholder="Contoh: Admin / Owner"></label>
+          </div>
+          <div class="settings-preview">
+            <span>Preview</span><strong id="settingsProfilePreview">DK User</strong><small id="settingsRolePreview">Profil lokal DK SHOP</small>
+          </div>
+          <div class="settings-actions"><button id="saveProfileSettings" class="btn primary" type="button">Simpan Profil</button></div>
+        </section>
+
+        
+        <section class="settings-card-block">
+          <div class="settings-card-title">
+            <div class="settings-icon">💳</div>
+            <div>
+              <h3>Metode Bayar</h3>
+              <p>Kelola metode pembayaran beserta No / ID dan Nama Pemilik.</p>
+            </div>
+          </div>
+
+          <div class="payment-method-form">
+            <input type="hidden" id="paymentMethodEditIndex" value="-1">
+            <div class="settings-fields three-col">
+              <label class="field">
+                <span>Nama Metode</span>
+                <input id="paymentMethodName" maxlength="60" placeholder="Contoh: Transfer Bank">
+              </label>
+              <label class="field">
+                <span>No / ID</span>
+                <input id="paymentMethodAccount" maxlength="80" placeholder="Contoh: 3460790513">
+              </label>
+              <label class="field">
+                <span>Nama Pemilik</span>
+                <input id="paymentMethodOwner" maxlength="80" placeholder="Contoh: Dika Fauzi">
+              </label>
+            </div>
+            <div class="settings-actions">
+              <button id="savePaymentMethod" class="btn primary" type="button">Tambah Metode</button>
+              <button id="cancelPaymentMethodEdit" class="btn" type="button" hidden>Batal Edit</button>
+            </div>
+          </div>
+
+          <div class="payment-method-list-wrap">
+            <div class="payment-method-list-head">
+              <strong>Daftar Metode Bayar</strong>
+              <small id="paymentMethodCount">0 metode</small>
+            </div>
+            <div id="paymentMethodList" class="payment-method-list"></div>
+          </div>
+        </section>
+
+
+        
+        
+
+
+        <section class="settings-card-block">
+          <div class="settings-card-title">
+            <div class="settings-icon">🖨️</div>
+            <div><h3>Printer Ethernet MINIPO</h3><p>Print ESC/POS langsung ke IP printer melalui local bridge, tanpa install driver printer.</p></div>
+          </div>
+          <div class="settings-fields two-col">
+            <label class="field"><span>IP Printer</span><input id="printerIp" inputmode="decimal" placeholder="192.168.1.100"></label>
+            <label class="field"><span>Port</span><input id="printerPort" inputmode="numeric" value="9100" placeholder="9100"></label>
+            <label class="field"><span>Bridge URL</span><input id="printerBridgeUrl" value="http://127.0.0.1:9123" placeholder="http://127.0.0.1:9123"></label>
+            <label class="field"><span>Lebar Kertas</span><select id="printerPaper"><option value="58">58 mm</option><option value="80" selected>80 mm</option></select></label>
+          </div>
+          <div id="printerStatus" class="printer-status neutral">Belum diuji.</div>
+          <div class="settings-actions">
+            <button id="savePrinterSettings" class="btn primary" type="button">Simpan Printer</button>
+            <button id="testPrinterConnection" class="btn" type="button">Test Connection</button>
+            <button id="printTestReceipt" class="btn" type="button">Print Test</button>
+          </div>
+
+          <div class="receipt-preview-shell">
+            <div class="receipt-preview-head">
+              <div>
+                <span class="section-kicker">PREVIEW UI</span>
+                <h4>Preview Struk</h4>
+              </div>
+              <span id="receiptPaperBadge" class="paper-badge">80 mm</span>
+            </div>
+
+            <div id="receiptPreview" class="receipt-paper paper-80">
+              <div class="receipt-center">
+                <strong class="receipt-brand">DK SHOP</strong>
+                <span>Smart Order Split</span>
+              </div>
+              <div class="receipt-rule"></div>
+              <div class="receipt-row"><span>No. Transaksi</span><b>DK-000128</b></div>
+              <div class="receipt-row"><span>Tanggal</span><b>07/10/2026 10:30</b></div>
+              <div class="receipt-row"><span>Operator</span><b id="receiptPreviewOperator">DK User</b></div>
+              <div class="receipt-rule"></div>
+
+              <div class="receipt-item">
+                <b>CHICKEN SHILLIN LARGE</b>
+                <div class="receipt-row"><span>1 × Rp22.500</span><b>Rp22.500</b></div>
+              </div>
+              <div class="receipt-item">
+                <b>POTATO CRISPY LARGE</b>
+                <div class="receipt-row"><span>1 × Rp19.800</span><b>Rp19.800</b></div>
+              </div>
+
+              <div class="receipt-rule"></div>
+              <div class="receipt-row"><span>Subtotal</span><b>Rp42.300</b></div>
+              <div class="receipt-row"><span>Ongkir</span><b>Rp444</b></div>
+              <div class="receipt-row"><span>Diskon</span><b>-Rp23.265</b></div>
+              <div class="receipt-rule strong"></div>
+              <div class="receipt-row receipt-total"><span>GRAND TOTAL</span><b>Rp19.479</b></div>
+              <div class="receipt-row"><span>Pembayaran</span><b>Transfer Bank</b></div>
+              <div class="receipt-rule"></div>
+              <div class="receipt-center receipt-footer">
+                <b>Terima kasih ♡</b>
+                <span>DK SHOP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-note"><strong>Catatan:</strong> browser tidak dapat membuka socket TCP langsung ke printer. DK SHOP memakai <code>print_bridge.py</code> di komputer lokal untuk meneruskan ESC/POS ke IP printer tanpa memasang driver Windows.</div>
+        </section>
+      </div>
+    </section>
+    </div>
+</main>
+
+  
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/core.js?v=2.0.5" defer></script>
+  <script src="assets/js/printer-client.js?v=2.0.5" defer></script>
+  <script src="assets/js/app.js?v=2.0.5" defer></script>
+  <script src="assets/js/xlsx-lite.js?v=2.0.5" defer></script>
+  <script src="assets/js/catalog-seed-history.js?v=2.0.5" defer></script>
+  <script src="assets/js/catalog.js?v=2.0.5" defer></script>
+  <script src="assets/js/history-report.js?v=2.0.5" defer></script>
+  <script src="assets/js/menu.js?v=2.0.5" defer></script>
+  <script src="assets/js/motion.js?v=2.0.5" defer></script>
+  <script src="assets/js/settings.js?v=2.0.5" defer></script>
+
+  <div id="broadcastWaModal" class="broadcast-modal" hidden>
+    <div class="broadcast-backdrop" data-broadcast-close></div>
+    <section class="broadcast-dialog" role="dialog" aria-modal="true" aria-labelledby="broadcastWaTitle">
+      <div class="broadcast-head">
+        <div>
+          <span class="section-kicker">WHATSAPP</span>
+          <h3 id="broadcastWaTitle">Broadcast Pembayaran</h3>
+          <p id="broadcastWaSubtitle">Pilih customer yang akan dikirim.</p>
+        </div>
+        <button class="btn small" type="button" data-broadcast-close>✕</button>
+      </div>
+
+      <div id="broadcastWaSummary" class="broadcast-summary"></div>
+      <div id="broadcastWaList" class="broadcast-list"></div>
+
+      <div class="broadcast-footer">
+        <small>Pesanan customer yang sama otomatis digabung menjadi satu pesan.</small>
+        <button id="broadcastCloseButton" class="btn" type="button" data-broadcast-close>Tutup</button>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

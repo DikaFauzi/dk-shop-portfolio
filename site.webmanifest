@@ -1,0 +1,22 @@
+{
+  "name": "DK SHOP — Smart Order Split",
+  "short_name": "DK SHOP",
+  "description": "DK SHOP adalah portfolio web app karya Dika Fauzi untuk membagi ongkir dan diskon secara presisi, mengelola katalog, menyimpan history transaksi, membuat laporan Excel, dan struk digital langsung di browser.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "lang": "id-ID",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/dk-shop-logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
