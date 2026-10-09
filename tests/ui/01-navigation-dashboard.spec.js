@@ -21,4 +21,20 @@ test.describe('Navigation & Dashboard', () => {
     await expect(page.locator('[data-page="dashboard"]')).toHaveClass(/motion-ready/);
     await expect(page.locator('#trendSevenDays .trend-day')).toHaveCount(7);
   });
+
+
+  test('semua field pencarian dibatasi maksimal 30 karakter', async ({ page }) => {
+    await page.goto('/#customer');
+    const searches = page.locator('input[type="search"], input[id*="Search"], input[id*="search"], input[class*="search"]');
+    const count = await searches.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let i = 0; i < count; i++) {
+      const input = searches.nth(i);
+      await expect(input).toHaveAttribute('maxlength', '30');
+      await input.fill('1234567890123456789012345678901234567890');
+      await expect(input).toHaveValue('123456789012345678901234567890');
+    }
+  });
+
 });

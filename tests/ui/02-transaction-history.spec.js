@@ -89,4 +89,62 @@ test.describe('Transaction → History → Edit', () => {
     expect(box.y+box.height).toBeLessThanOrEqual((await page.viewportSize()).height);
   });
 
+
+
+  test('autocomplete Nama Cust menampilkan seluruh Master Customer tanpa limit 8', async ({ page }) => {
+    const customers = Array.from({length:15}, (_,i)=>({
+      id:`cust-${i+1}`,
+      name:`CUSTOMER ${String(i+1).padStart(2,'0')}`,
+      whatsapp:`628120000${String(i+1).padStart(4,'0')}`
+    }));
+    await page.evaluate(rows => localStorage.setItem('dkShopCustomersV1', JSON.stringify(rows)), customers);
+
+    await go(page, 'app');
+    const input = page.locator('#rows tr').first().locator('[data-field="name"]');
+    await input.focus();
+
+    const options = page.locator('.customer-autocomplete-menu:visible .customer-autocomplete-option');
+    await expect(options).toHaveCount(15);
+  });
+
+
+
+  test('Nama Cust dan Nama Pesanan maksimal 30 karakter', async ({ page }) => {
+    await go(page, 'app');
+    const row=page.locator('#rows tr').first();
+    const customer=row.locator('[data-field="name"]');
+    const order=row.locator('[data-field="item"]');
+    const longText='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890EXTRA';
+
+    await expect(customer).toHaveAttribute('maxlength','30');
+    await expect(order).toHaveAttribute('maxlength','30');
+
+    await customer.fill(longText);
+    await order.fill(longText);
+
+    await expect(customer).toHaveValue(longText.slice(0,30));
+    await expect(order).toHaveValue(longText.slice(0,30));
+  });
+
+
+
+  test('hard cap 30 karakter mencegah ketik dan paste pada Nama Cust dan Nama Pesanan', async ({ page }) => {
+    await go(page, 'app');
+    const row=page.locator('#rows tr').first();
+    const customer=row.locator('[data-field="name"]');
+    const order=row.locator('[data-field="item"]');
+    const longText='1234567890123456789012345678901234567890';
+
+    await customer.fill(longText);
+    await expect(customer).toHaveValue(longText.slice(0,30));
+
+    await order.fill(longText);
+    await expect(order).toHaveValue(longText.slice(0,30));
+
+    const custValue=await customer.inputValue();
+    const orderValue=await order.inputValue();
+    expect(custValue.length).toBe(30);
+    expect(orderValue.length).toBe(30);
+  });
+
 });

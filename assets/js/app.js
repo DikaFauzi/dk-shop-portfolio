@@ -51,7 +51,7 @@ function calc(){const w=rows.map(r=>Math.max(0,N(r.price))),sub=w.reduce((a,b)=>
 function transactionIssues(){const active=rows.filter(r=>N(r.price)>0),started=rows.filter(r=>(r.name||'').trim()||(r.item||'').trim()||N(r.price)||N(r.customOther)),sub=active.reduce((a,r)=>a+N(r.price),0),total=active.reduce((a,r)=>a+N(r.final),0),issues=[];if(!e.orderDate.value)issues.push('Tanggal transaksi wajib diisi.');if(!active.length)issues.push('Isi minimal satu pesanan dengan harga lebih dari Rp0.');if(started.some(r=>N(r.price)<=0))issues.push('Setiap pesanan yang diisi harus memiliki harga lebih dari Rp0.');if(active.some(r=>!(r.name||'').trim()))issues.push('Nama customer wajib diisi pada setiap pesanan.');if(active.some(r=>!(r.item||'').trim()))issues.push('Nama pesanan wajib diisi pada setiap pesanan.');if(N(e.discount.value)>sub)issues.push(`Diskon maksimal ${F(sub)}.`);if(sub+rows.reduce((a,r)=>a+N(r.ship)+N(r.other),0)>MAX_AMOUNT)issues.push(`Total transaksi maksimal ${F(MAX_AMOUNT)}.`);if(e.appTotal.value.trim()!==''&&N(e.appTotal.value)!==total)issues.push(`Total aplikasi harus sama dengan hasil hitung ${F(total)}.`);return issues}
 function transactionIsValid(showMessage=false){calc();const issues=transactionIssues();if(issues.length){e.validation.className='validation error';e.validation.textContent=issues[0];if(showMessage)msg(issues[0]);return false}return true}
 function setEditMode(orderNo=null){editingOrder=orderNo;e.editBanner.hidden=!orderNo;e.cancelEditButton.hidden=!orderNo;e.saveButton.textContent=orderNo?'✓ Simpan Perubahan':'✓ Simpan';e.editBannerTitle.textContent=orderNo?`Mode Edit — ${orderNo}`:'Mode Edit';if(!orderNo)e.editReason.value=''}
-function render(){e.rows.innerHTML=rows.map((r,i)=>`<tr><td class="row-no">${i+1}</td><td><div class="customer-input-wrap"><input data-row="${i}" data-field="name" class="customer-autocomplete-input" value="${E(r.name)}" placeholder="Nama customer" autocomplete="off"><div class="customer-autocomplete-menu" hidden></div></div></td><td><div class="order-input-wrap"><input data-row="${i}" data-field="item" class="order-autocomplete-input" value="${E(r.item)}" placeholder="Nama pesanan" autocomplete="off"><div class="order-autocomplete-menu" hidden></div></div></td><td><input class="money-input" data-row="${i}" data-field="price" value="${N(r.price)?N(r.price).toLocaleString('id-ID'):''}" inputmode="numeric" placeholder="0"></td><td class="num" id="ship-${i}">${F(r.ship||0)}</td><td><input class="money-input" data-row="${i}" data-field="customOther" value="${N(r.customOther)?N(r.customOther).toLocaleString('id-ID'):''}" inputmode="numeric" placeholder="0"></td><td class="num" id="disc-${i}">${F(r.disc||0)}</td><td class="num strong" id="final-${i}">${F(r.final||0)}</td><td><div class="row-actions"><button class="icon-btn" type="button" aria-label="Duplikat pesanan" title="Duplikat" data-row-action="duplicate" data-index="${i}">⧉</button><button class="icon-btn delete" type="button" aria-label="Hapus pesanan" title="Hapus" data-row-action="delete" data-index="${i}">×</button></div></td></tr>`).join('');calc()}
+function render(){e.rows.innerHTML=rows.map((r,i)=>`<tr><td class="row-no">${i+1}</td><td><div class="customer-input-wrap"><input data-row="${i}" data-field="name" class="customer-autocomplete-input" value="${E(r.name)}" placeholder="Nama customer" autocomplete="off" maxlength="30"><div class="customer-autocomplete-menu" hidden></div></div></td><td><div class="order-input-wrap"><input data-row="${i}" data-field="item" class="order-autocomplete-input" value="${E(r.item)}" placeholder="Nama pesanan" autocomplete="off" maxlength="50"><div class="order-autocomplete-menu" hidden></div></div></td><td><input class="money-input" data-row="${i}" data-field="price" value="${N(r.price)?N(r.price).toLocaleString('id-ID'):''}" inputmode="numeric" placeholder="0"></td><td class="num" id="ship-${i}">${F(r.ship||0)}</td><td><input class="money-input" data-row="${i}" data-field="customOther" value="${N(r.customOther)?N(r.customOther).toLocaleString('id-ID'):''}" inputmode="numeric" placeholder="0"></td><td class="num" id="disc-${i}">${F(r.disc||0)}</td><td class="num strong" id="final-${i}">${F(r.final||0)}</td><td><div class="row-actions"><button class="icon-btn" type="button" aria-label="Duplikat pesanan" title="Duplikat" data-row-action="duplicate" data-index="${i}">⧉</button><button class="icon-btn delete" type="button" aria-label="Hapus pesanan" title="Hapus" data-row-action="delete" data-index="${i}">×</button></div></td></tr>`).join('');calc()}
 function draft(){localStorage.setItem(K.draft,JSON.stringify({rows,shipping:N(e.shipping.value),discount:N(e.discount.value),appTotal:N(e.appTotal.value),order,editingOrder,date:e.orderDate.value,time:e.orderTime.value,status:e.orderStatus.value,payment:pay()}));e.draftStateText.innerHTML='<span></span> Draft tersimpan otomatis'}
 function snap(){calc();const a=rows.filter(r=>N(r.price)>0);return{orderNo:order,date:e.orderDate.value,time:e.orderTime.value||nowTime(),status:e.orderStatus.value,savedAt:new Date().toISOString(),editReason:editingOrder?e.editReason.value.trim():'',shipping:a.reduce((x,r)=>x+(r.ship||0),0),other:a.reduce((x,r)=>x+(r.other||0),0),discount:a.reduce((x,r)=>x+(r.disc||0),0),appTotal:N(e.appTotal.value),payment:pay(),data:a.map(r=>({...r,customOther:N(r.customOther)})),total:a.reduce((x,r)=>x+(r.final||0),0)}}
 function analytics(){
@@ -220,6 +220,15 @@ function closeBroadcast(){
 }
 
 
+
+function capAutocompleteSearchValue(input){
+  if(!input)return;
+  const max=input.classList.contains('order-autocomplete-input')?50:30;
+  input.maxLength=max;
+  const value=String(input.value||'');
+  if(value.length>max)input.value=value.slice(0,max);
+}
+
 function customerMasterOptions(){
   try{
     const rows=JSON.parse(localStorage.getItem('dkShopCustomersV1')||'[]');
@@ -229,12 +238,12 @@ function customerMasterOptions(){
 function customerMatchList(query){
   const q=String(query||'').trim().toLocaleLowerCase('id-ID');
   const rows=customerMasterOptions();
-  if(!q)return rows.slice(0,8);
+  if(!q)return rows;
   return rows.filter(x=>{
     const name=String(x.name||'').toLocaleLowerCase('id-ID');
     const wa=String(x.whatsapp||'').toLocaleLowerCase('id-ID');
     return name.includes(q)||wa.includes(q);
-  }).slice(0,8);
+  });
 }
 function closeCustomerAutocomplete(except=null){
   document.querySelectorAll('.customer-autocomplete-menu').forEach(menu=>{
@@ -309,11 +318,11 @@ function renderCustomerAutocomplete(input){
 }
 document.addEventListener('focusin',ev=>{
   const input=ev.target.closest?.('.customer-autocomplete-input');
-  if(input)renderCustomerAutocomplete(input);
+  if(input){capAutocompleteSearchValue(input);renderCustomerAutocomplete(input);}
 });
 document.addEventListener('input',ev=>{
   const input=ev.target.closest?.('.customer-autocomplete-input');
-  if(input)renderCustomerAutocomplete(input);
+  if(input){capAutocompleteSearchValue(input);renderCustomerAutocomplete(input);}
 });
 document.addEventListener('keydown',ev=>{
   const input=ev.target.closest?.('.customer-autocomplete-input');
@@ -387,13 +396,13 @@ function catalogMasterOptions(){
 function orderMatchList(query){
   const q=String(query||'').trim().toLocaleLowerCase('id-ID');
   const rows=catalogMasterOptions();
-  if(!q)return rows.slice(0,8);
+  if(!q)return rows;
   return rows.filter(x=>{
     const name=String(x.name||'').toLocaleLowerCase('id-ID');
     const sku=String(x.sku||'').toLocaleLowerCase('id-ID');
     const category=String(x.category||'').toLocaleLowerCase('id-ID');
     return name.includes(q)||sku.includes(q)||category.includes(q);
-  }).slice(0,8);
+  });
 }
 function closeOrderAutocomplete(except=null){
   document.querySelectorAll('.order-autocomplete-menu').forEach(menu=>{
@@ -490,11 +499,11 @@ function repositionOrderAutocomplete(){
 }
 document.addEventListener('focusin',ev=>{
   const input=ev.target.closest?.('.order-autocomplete-input');
-  if(input)renderOrderAutocomplete(input);
+  if(input){capAutocompleteSearchValue(input);renderOrderAutocomplete(input);}
 });
 document.addEventListener('input',ev=>{
   const input=ev.target.closest?.('.order-autocomplete-input');
-  if(input)renderOrderAutocomplete(input);
+  if(input){capAutocompleteSearchValue(input);renderOrderAutocomplete(input);}
 });
 document.addEventListener('keydown',ev=>{
   const input=ev.target.closest?.('.order-autocomplete-input');
@@ -582,7 +591,7 @@ function download(x=snap()){
 function theme(v){document.documentElement.dataset.theme=v;localStorage.setItem(K.theme,v);e.themeToggle.textContent=v==='dark'?'Tema Terang':'Tema Gelap'}
 function resetSequence(){if(history().length)return msg('Hapus history terlebih dahulu sebelum reset nomor.');const typed=prompt('Untuk reset nomor transaksi, ketik RESET');if(typed!=='RESET')return msg('Reset dibatalkan.');localStorage.removeItem(K.seq);localStorage.setItem(K.seqVersion,'2');order=nextNo();e.orderNo.value=order;draft();msg('Nomor transaksi direset. Pesanan baru berikutnya mulai 000001.')}
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-action]');if(b){const a=b.dataset.action;if(a==='add-row'){rows.push({name:'',item:'',price:0,customOther:0});render();draft()}else if(a==='save-history')saveHistory();else if(a==='cancel-edit'){if(confirm('Batalkan edit transaksi ini?'))newOrder(false)}else if(a==='copy-order'){if(transactionIsValid(true))copy(text(),'Pesanan disalin.')}else if(a==='download-receipt'){if(transactionIsValid(true))download()}else if(a==='print'){if(transactionIsValid(true))printReceipt()}else if(a==='export-csv'){if(transactionIsValid(true))csv()}else if(a==='new-order')newOrder();else if(a==='load-demo')loadDemo();else if(a==='copy-account')copy(payLine(),'Pembayaran disalin.');else if(a==='reset-sequence')resetSequence();else if(a==='clear-history'&&confirm('Hapus semua history transaksi?')){setHistory([]);renderHistory();analytics();msg('History dihapus.')}}const r=ev.target.closest('[data-row-action]');if(r){const i=+r.dataset.index;if(r.dataset.rowAction==='duplicate')rows.splice(i+1,0,{...rows[i]});else rows.splice(i,1);if(!rows.length)rows=[{name:'',item:'',price:0,customOther:0}];render();draft()}const h=ev.target.closest('[data-history-action]');if(h){const i=+h.dataset.index,x=history()[i],a=h.dataset.historyAction;if(!x)return;if(a==='open')openHistory(i);else if(a==='copy')copy(text(x),'History disalin.');else if(a==='download')download(x);else if(a==='delete'&&confirm('Hapus history ini?')){const z=history();z.splice(i,1);setHistory(z);renderHistory();analytics();msg('History dihapus.')}}});
-e.rows.addEventListener('input',ev=>{const i=ev.target;if(!i.matches('[data-row]'))return;const r=rows[+i.dataset.row],f=i.dataset.field;if(f==='price'||f==='customOther'){const tooLarge=rawNumber(i.value)>MAX_AMOUNT;r[f]=N(i.value);i.value=r[f]?r[f].toLocaleString('id-ID'):'';if(tooLarge)msg(`Nominal maksimal ${F(MAX_AMOUNT)}.`)}else r[f]=i.value;calc();draft()});
+e.rows.addEventListener('input',ev=>{const i=ev.target;if(!i.matches('[data-row]'))return;const r=rows[+i.dataset.row],f=i.dataset.field;if(f==='price'||f==='customOther'){const tooLarge=rawNumber(i.value)>MAX_AMOUNT;r[f]=N(i.value);i.value=r[f]?r[f].toLocaleString('id-ID'):'';if(tooLarge)msg(`Nominal maksimal ${F(MAX_AMOUNT)}.`)}else{const max=f==='item'?50:(f==='name'?30:null);if(max&&String(i.value||'').length>max)i.value=String(i.value||'').slice(0,max);r[f]=i.value}calc();draft()});
 [e.shipping,e.discount,e.appTotal].forEach(i=>i.addEventListener('input',()=>{const tooLarge=rawNumber(i.value)>MAX_AMOUNT,v=N(i.value);i.value=v?v.toLocaleString('id-ID'):'';if(tooLarge)msg(`Nominal maksimal ${F(MAX_AMOUNT)}.`);calc();draft()}));
 document.addEventListener('focusin',ev=>{if(ev.target.matches('.money-input,.money-field input'))requestAnimationFrame(()=>ev.target.select())});
 [e.paymentAccount,e.paymentName].forEach(i=>i.addEventListener('input',()=>{syncPaymentUI();draft()}));e.paymentMethod.addEventListener('change',()=>{applyPaymentMethodDefaults(true);syncPaymentUI();draft()});e.orderDate.addEventListener('change',draft);e.orderTime.addEventListener('change',draft);e.orderStatus.addEventListener('change',draft);[e.historySearch,e.historyStatus,e.historySort].forEach(i=>i.addEventListener('input',renderHistory));e.themeToggle.addEventListener('click',()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark'));window.addEventListener('beforeprint',()=>buildReceipt());

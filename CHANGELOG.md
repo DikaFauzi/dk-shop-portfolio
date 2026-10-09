@@ -1,3 +1,49 @@
+# v2.0.10 - Order Name Max 50
+
+- Nama Pesanan maksimal 50 karakter.
+- Nama Cust tetap maksimal 30 karakter.
+- Search field umum tetap maksimal 30 karakter.
+- Hard cap input, paste, dan state disesuaikan khusus Nama Pesanan.
+- Cache-busting dinaikkan ke v2.0.10.
+
+# v2.0.9 - Hard Cap 30 Characters
+
+- Batas 30 karakter diperkuat dengan capture-phase input guard.
+- beforeinput mencegah karakter ke-31 masuk.
+- paste dipotong otomatis maksimal 30 karakter.
+- MutationObserver memastikan field dinamis juga mendapatkan guard.
+- Nama Cust dan Nama Pesanan dibatasi juga pada state transaksi.
+- Seluruh search field tetap mengikuti batas 30 karakter.
+- Cache-busting dinaikkan ke v2.0.9.
+
+# v2.0.8 - Search / Autocomplete Max 30 Fix
+
+- Maksimal 30 karakter sekarang berlaku juga ke Nama Cust.
+- Maksimal 30 karakter sekarang berlaku juga ke Nama Pesanan.
+- Customer Search, Katalog Search, dan History Search tetap dibatasi 30 karakter.
+- Guard global diperluas untuk field autocomplete.
+- Dynamic transaction rows langsung diberi maxlength=30.
+- Cache-busting dinaikkan ke v2.0.8.
+
+# v2.0.7 - Global Search Length Guard
+
+- Semua kolom pencarian dibatasi maksimal 30 karakter.
+- Berlaku untuk History, Katalog, Customer, dan search field lain.
+- Guard diterapkan di HTML melalui maxlength=30.
+- Guard JavaScript global memastikan paste/input tidak melewati 30 karakter.
+- Cache-busting asset dinaikkan ke v2.0.7.
+- UI regression ditambah untuk batas 30 karakter.
+
+# v2.0.6 - Full Master Autocomplete
+
+- Menghapus batas 8 suggestion pada Nama Cust.
+- Menghapus batas 8 suggestion pada Nama Pesanan.
+- Fokus input kosong sekarang dapat menampilkan seluruh Master Customer / Katalog.
+- Pencarian menampilkan seluruh data yang cocok.
+- Dropdown tetap scrollable agar UI tetap rapi.
+- Cache-busting seluruh asset dinaikkan ke v2.0.6.
+- UI regression ditambah untuk memastikan lebih dari 8 data tetap tampil.
+
 # v2.0.5 - GitHub Pages Cache Bust Fix
 
 - Menyamakan cache-busting seluruh CSS/JS ke v2.0.5.

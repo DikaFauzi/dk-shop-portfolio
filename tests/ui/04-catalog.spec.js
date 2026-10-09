@@ -57,4 +57,25 @@ test.describe('Catalog UI', () => {
     await expect(item).not.toHaveAttribute('list', /.+/);
   });
 
+
+
+  test('autocomplete Pesanan menampilkan seluruh Katalog tanpa limit 8', async ({ page }) => {
+    const products = Array.from({length:20}, (_,i)=>({
+      id:`p-${i+1}`,
+      sku:`SKU-${String(i+1).padStart(2,'0')}`,
+      category:'Regression',
+      name:`PRODUK ${String(i+1).padStart(2,'0')}`,
+      price:10000+i,
+      active:true
+    }));
+    await page.evaluate(rows => localStorage.setItem('dkShopCatalogV1', JSON.stringify(rows)), products);
+
+    await go(page, 'app');
+    const input = page.locator('#rows tr').first().locator('[data-field="item"]');
+    await input.focus();
+
+    const options = page.locator('.order-autocomplete-menu:visible .order-autocomplete-option');
+    await expect(options).toHaveCount(20);
+  });
+
 });

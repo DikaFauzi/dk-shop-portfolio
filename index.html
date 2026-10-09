@@ -13,7 +13,7 @@
   <meta name="author" content="Dika Fauzi">
   <meta name="creator" content="Dika Fauzi">
   <meta name="application-name" content="DK SHOP">
-  <meta name="dk-shop-build" content="2.0.5">
+  <meta name="dk-shop-build" content="2.0.10">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://dikafauzi.github.io/dk-shop-portfolio/">
   <meta property="og:site_name" content="DK SHOP">
@@ -28,11 +28,11 @@
   <title>DK SHOP — Smart Order Split | Dika Fauzi</title>
   <link rel="icon" href="assets/icons/favicon.png" type="image/png">
   <link rel="preload" href="assets/icons/dk-shop-logo.png" as="image">
-  <link rel="stylesheet" href="assets/css/styles.css?v=2.0.5">
-  <link rel="stylesheet" href="assets/css/motion.css?v=2.0.5">
-  <link rel="stylesheet" href="assets/css/catalog.css?v=2.0.5">
-  <link rel="stylesheet" href="assets/css/menu.css?v=2.0.5">
-  <link rel="stylesheet" href="assets/css/analytics-dashboard.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.0.10">
+  <link rel="stylesheet" href="assets/css/motion.css?v=2.0.10">
+  <link rel="stylesheet" href="assets/css/catalog.css?v=2.0.10">
+  <link rel="stylesheet" href="assets/css/menu.css?v=2.0.10">
+  <link rel="stylesheet" href="assets/css/analytics-dashboard.css?v=2.0.10">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -51,12 +51,12 @@
     "@type": "Person",
     "name": "Dika Fauzi"
   },
-  "softwareVersion": "2.0.5",
+  "softwareVersion": "2.0.10",
   "isAccessibleForFree": true,
   "inLanguage": "id-ID"
 }
   </script>
-  <link rel="stylesheet" href="assets/css/settings.css?v=2.0.5">
+  <link rel="stylesheet" href="assets/css/settings.css?v=2.0.10">
 </head>
 <body>
   <div class="ambient ambient-a"></div>
@@ -301,7 +301,7 @@
         </div>
 
         <div class="catalog-toolbar">
-          <input id="catalogSearch" class="search-input" type="search" placeholder="Cari SKU, nama produk, kategori...">
+          <input id="catalogSearch" class="search-input" type="search" placeholder="Cari SKU, nama produk, kategori..." maxlength="30">
           <select id="catalogCategoryFilter" class="compact-select"><option value="all">Semua kategori</option></select>
           <div class="catalog-toolbar-right">
             <button id="catalogTemplateButton" class="btn subtle small" type="button">Contoh Excel</button>
@@ -383,7 +383,7 @@
           <div class="customer-toolbar">
             <div class="customer-search-box">
               <span class="customer-search-icon" aria-hidden="true">⌕</span>
-              <input id="customerSearch" placeholder="Cari nama customer atau nomor WhatsApp" autocomplete="off">
+              <input id="customerSearch" placeholder="Cari nama customer atau nomor WhatsApp" autocomplete="off" maxlength="30">
               <button id="customerSearchClear" class="customer-search-clear" type="button" aria-label="Bersihkan pencarian" hidden>×</button>
             </div>
             <div class="settings-actions customer-toolbar-actions">
@@ -426,7 +426,7 @@
       <div class="panel-head history-head">
         <div><span class="section-kicker">TRACKING</span><h2>History Pesanan</h2><p>Cari, filter, buka ulang, copy, download, atau hapus transaksi sebelumnya.</p></div>
         <div class="history-controls">
-          <input id="historySearch" class="search-input" type="search" placeholder="Cari transaksi / customer / item...">
+          <input id="historySearch" class="search-input" type="search" placeholder="Cari transaksi / customer / item..." maxlength="30">
           <select id="historyStatus" class="compact-select"><option value="all">Semua status</option><option value="draft">Draft</option><option value="unpaid">Belum Bayar</option><option value="paid">Sudah Bayar</option><option value="completed">Selesai</option><option value="cancelled">Dibatalkan</option></select>
           <select id="historySort" class="compact-select"><option value="newest">Terbaru</option><option value="oldest">Terlama</option><option value="highest">Nominal terbesar</option><option value="lowest">Nominal terkecil</option></select>
           <button id="historyReportButton" class="btn primary small" type="button">⇩ Download Report Lengkap</button>
@@ -442,7 +442,7 @@
     
   
 
-  <footer class="site-footer"><div class="footer-brand"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP"><div><strong>DK SHOP</strong><small>Smart Order Split • v2.0.5 LOCAL</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
+  <footer class="site-footer"><div class="footer-brand"><img class="brand-logo" src="assets/icons/dk-shop-logo.png" alt="Logo DK SHOP"><div><strong>DK SHOP</strong><small>Smart Order Split • v2.0.10 LOCAL</small></div></div><p>HTML • CSS • Vanilla JavaScript • LocalStorage • Canvas API</p></footer>
   
     <div class="page-view" data-page="settings" hidden>
 <section id="settings" class="panel settings-page">
@@ -587,16 +587,16 @@
   
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="assets/js/core.js?v=2.0.5" defer></script>
-  <script src="assets/js/printer-client.js?v=2.0.5" defer></script>
-  <script src="assets/js/app.js?v=2.0.5" defer></script>
-  <script src="assets/js/xlsx-lite.js?v=2.0.5" defer></script>
-  <script src="assets/js/catalog-seed-history.js?v=2.0.5" defer></script>
-  <script src="assets/js/catalog.js?v=2.0.5" defer></script>
-  <script src="assets/js/history-report.js?v=2.0.5" defer></script>
-  <script src="assets/js/menu.js?v=2.0.5" defer></script>
-  <script src="assets/js/motion.js?v=2.0.5" defer></script>
-  <script src="assets/js/settings.js?v=2.0.5" defer></script>
+  <script src="assets/js/core.js?v=2.0.10" defer></script>
+  <script src="assets/js/printer-client.js?v=2.0.10" defer></script>
+  <script src="assets/js/app.js?v=2.0.10" defer></script>
+  <script src="assets/js/xlsx-lite.js?v=2.0.10" defer></script>
+  <script src="assets/js/catalog-seed-history.js?v=2.0.10" defer></script>
+  <script src="assets/js/catalog.js?v=2.0.10" defer></script>
+  <script src="assets/js/history-report.js?v=2.0.10" defer></script>
+  <script src="assets/js/menu.js?v=2.0.10" defer></script>
+  <script src="assets/js/motion.js?v=2.0.10" defer></script>
+  <script src="assets/js/settings.js?v=2.0.10" defer></script>
 
   <div id="broadcastWaModal" class="broadcast-modal" hidden>
     <div class="broadcast-backdrop" data-broadcast-close></div>
